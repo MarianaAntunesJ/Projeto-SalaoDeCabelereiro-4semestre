@@ -24,5 +24,10 @@ namespace SalaoDeCabelereiro.View
         {
             InitializeComponent();
         }
+
+        private void BtnProdutos_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

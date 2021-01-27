@@ -79,16 +79,8 @@
     <Compile Include="View\ProdutoView.xaml.cs">
       <DependentUpon>ProdutoView.xaml</DependentUpon>
     </Compile>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\AgendaView.xaml">
@@ -159,6 +151,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Imagens\Login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagens\tabelatiposdecabelo.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

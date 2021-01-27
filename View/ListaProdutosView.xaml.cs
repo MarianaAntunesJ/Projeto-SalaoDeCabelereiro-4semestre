@@ -13,21 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SalaoDeCabelereiro
+namespace SalaoDeCabelereiro.View
 {
     /// <summary>
-    /// Interação lógica para MainWindow.xam
+    /// Interação lógica para ListaProdutosView.xam
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ListaProdutosView : Page
     {
-        public MainWindow()
+        public ListaProdutosView()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

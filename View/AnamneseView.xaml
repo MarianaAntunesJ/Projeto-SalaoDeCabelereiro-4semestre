@@ -5,12 +5,64 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SalaoDeCabelereiro.View"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="520" d:DesignWidth="1080"
       Title="AnamneseView">
 
-    <Viewbox>
-        <Grid>
-
-        </Grid>
-    </Viewbox>
+    <Grid Background="#FFDFCAFD">
+        <Rectangle Fill="WhiteSmoke"  HorizontalAlignment="Left" Height="440" Margin="10,24,0,0" VerticalAlignment="Top" Width="1060"/>
+        <Label Name="LbCliente" Content="Cliente:" HorizontalAlignment="Left" Margin="17,35,0,0" VerticalAlignment="Top" Height="30" Width="102" FontWeight="Bold" RenderTransformOrigin="0.654,0.6"/>
+        <TextBox Name="TxBPesquisa" HorizontalAlignment="Left" Height="28" Margin="78,37,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="400"/>
+        <Button x:Name="BtSalvar" Content="Salvar" HorizontalAlignment="Left" Margin="585,488,0,0" VerticalAlignment="Top" Width="96" Height="22" />
+        <Button x:Name="BtSair" Content="Sair" HorizontalAlignment="Left" VerticalAlignment="Top" Width="95" Margin="397,488,0,0" Height="22" Click="BtnSair"/>
+        <Rectangle Fill="Black" HorizontalAlignment="Left" Height="1" Margin="18,72,0,0" VerticalAlignment="Top" Width="1010" RenderTransformOrigin="0.5,0.5"/>
+        <Label Name="LbGestante" Content="Gestante?" HorizontalAlignment="Left" Margin="18,78,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <RadioButton x:Name="RBGestanteSim" Content="SIM" HorizontalAlignment="Left" Margin="106,84,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="RBGestanteNao" Content="NÃO" HorizontalAlignment="Left" Margin="175,84,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="LbDiabetes" Content="Diabetes?" HorizontalAlignment="Left" Margin="18,109,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <RadioButton x:Name="RBDiabetesSim" Content="SIM" HorizontalAlignment="Left" Margin="106,115,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="RBDiabetesNao" Content="NÃO" HorizontalAlignment="Left" Margin="175,115,0,0" VerticalAlignment="Top"/>
+        <Label Name="LbAlergia" Content="Alergia a esmalte/cosméticos/outros? " HorizontalAlignment="Left" Margin="18,140,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <RadioButton Name="RBAlergiaSim" Content="SIM" HorizontalAlignment="Left" Margin="313,146,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="RBAlergiaNao" Content="NÃO" HorizontalAlignment="Left" Margin="382,146,0,0" VerticalAlignment="Top"/>
+        <Label Name="LbAlergiaEspecifique" Content="ESPECIFIQUE:" HorizontalAlignment="Left" Margin="477,140,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox Name="TxBAlergia" HorizontalAlignment="Left" Height="26" Margin="568,140,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="412"/>
+        <Label x:Name="LbMedicamento" Content="Faz uso de algum de medicamento? " HorizontalAlignment="Left" Margin="18,171,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <RadioButton x:Name="RBMedicamentoSim" Content="SIM" HorizontalAlignment="Left" Margin="313,177,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="RBMedicamentoNao" Content="NÃO" HorizontalAlignment="Left" Margin="382,177,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="LbMedicamentoEspecifique" Content="ESPECIFIQUE:" HorizontalAlignment="Left" Margin="477,171,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox Name="TxBMedicamento" HorizontalAlignment="Left" Height="26" Margin="568,171,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="412"/>
+        <Label x:Name="LbOnicomicpse" Content="Problema de onicomicpse(micose/fungo/outros)? " HorizontalAlignment="Left" Margin="18,202,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="323"/>
+        <RadioButton x:Name="RBOnicomicpseSim" Content="SIM" HorizontalAlignment="Left" Margin="313,208,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="RBOnicomicpseoNao" Content="NÃO" HorizontalAlignment="Left" Margin="382,208,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="LbOnicomicpseEspecifique" Content="ESPECIFIQUE:" HorizontalAlignment="Left" Margin="477,202,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox x:Name="TxBOnicomicpse" HorizontalAlignment="Left" Height="26" Margin="568,202,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="412"/>
+        <Rectangle Fill="Black" HorizontalAlignment="Left" Height="1" Margin="18,237,0,0" VerticalAlignment="Top" Width="1010" RenderTransformOrigin="0.5,0.5"/>
+        <Label Name="LbTipoDeCabelo" Content="Tipo de cabelo:" HorizontalAlignment="Left" Margin="20,272,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
+        <RadioButton x:Name="RbLiso" Content="1. Liso" HorizontalAlignment="Left" Margin="20,319,0,0" VerticalAlignment="Top" Checked="RadioButton_Checked"/>
+        <RadioButton x:Name="RbOndulado" Content="2. Ondulado" HorizontalAlignment="Left" Margin="20,345,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="RbCacheado" Content="3. Cacheado" HorizontalAlignment="Left" Margin="20,369,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="RbCrespo" Content="4. Crespo" HorizontalAlignment="Left" Margin="20,395,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="RbA" Content="A." HorizontalAlignment="Left" Margin="135,319,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="RbB" Content="B." HorizontalAlignment="Left" Margin="135,345,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="RbC" Content="C." HorizontalAlignment="Left" Margin="135,369,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="RbD" Content="D." HorizontalAlignment="Left" Margin="135,395,0,0" VerticalAlignment="Top"/>
+        <Image Name="ImgTiposDeCabelo" Source="..\Imagens\tabelatiposdecabelo.jpg" HorizontalAlignment="Left" Height="193" Margin="213,256,0,0" VerticalAlignment="Top" Width="350"/>
+        <Label Name="LbCorNatural" Content="Cor natural?" HorizontalAlignment="Left" Margin="621,272,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <RadioButton x:Name="RbCorNaturalSim" Content="SIM" HorizontalAlignment="Left" Margin="730,278,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="RbCorNaturalNao" Content="NÃO" HorizontalAlignment="Left" Margin="795,278,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="LbCorNaturalEspecifique" Content="ESPECIFIQUE:" HorizontalAlignment="Left" Margin="621,298,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="94"/>
+        <TextBox x:Name="TxBCorNatural" HorizontalAlignment="Left" Height="26" Margin="715,298,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="274"/>
+        <Label Name="LbCaracteristica" Content="Característica?" HorizontalAlignment="Left" Margin="619,334,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <RadioButton x:Name="RbCaracteristicaSeco" Content="Seco" HorizontalAlignment="Left" Margin="728,340,0,0" VerticalAlignment="Top" Checked="RbCaracteristicaSim_Checked"/>
+        <RadioButton x:Name="RbCaracteristicaOleoso" Content="Oleoso" HorizontalAlignment="Left" Margin="826,340,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="RbCaracteristicaMisto" Content="Misto" HorizontalAlignment="Left" Margin="933,340,0,0" VerticalAlignment="Top"/>
+        <Label Name="LbDensidade" Content="Densidade:" HorizontalAlignment="Left" Margin="619,373,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <RadioButton x:Name="RbDensidadeAlta" Content="Alta" HorizontalAlignment="Left" Margin="728,379,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="RbDensidadeMedia" Content="Média" HorizontalAlignment="Left" Margin="826,379,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="RbDensidadeBaixa" Content="Baixa" HorizontalAlignment="Left" Margin="933,379,0,0" VerticalAlignment="Top"/>
+        <Label Name="LbTextura" Content="Textura" HorizontalAlignment="Left" Margin="619,411,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <RadioButton x:Name="RbTexturaFino" Content="Fino" HorizontalAlignment="Left" Margin="728,417,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="RbTexturaMédio" Content="Médio" HorizontalAlignment="Left" Margin="826,417,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="RbTexturaGrosso" Content="Grosso" HorizontalAlignment="Left" Margin="933,417,0,0" VerticalAlignment="Top"/>
+    </Grid>
 </Page>

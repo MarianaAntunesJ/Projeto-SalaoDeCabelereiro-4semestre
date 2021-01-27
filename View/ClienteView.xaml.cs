@@ -24,5 +24,11 @@ namespace SalaoDeCabelereiro.View
         {
             InitializeComponent();
         }
+
+        private void BtnAnamnese(object sender, RoutedEventArgs e)
+        {
+            SecondFrame.Visibility = Visibility.Visible;
+            SecondFrame.Content = new AnamneseView();
+        }
     }
 }

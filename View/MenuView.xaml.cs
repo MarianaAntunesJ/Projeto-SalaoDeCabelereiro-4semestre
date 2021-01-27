@@ -50,9 +50,10 @@ namespace SalaoDeCabelereiro.View
             FrameMain.Content = new ProcedimentoView();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void BtnProdutos(object sender, RoutedEventArgs e)
         {
-
+            ControlaGridCursor(e);
+            FrameMain.Content = new ProdutoView();
         }
     }
 }

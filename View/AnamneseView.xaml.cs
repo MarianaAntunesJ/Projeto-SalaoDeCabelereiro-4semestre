@@ -24,5 +24,20 @@ namespace SalaoDeCabelereiro.View
         {
             InitializeComponent();
         }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RbCaracteristicaSim_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnSair(object sender, RoutedEventArgs e)
+        {
+            this.Visibility = Visibility.Hidden;
+        }
     }
 }

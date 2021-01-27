@@ -17,9 +17,9 @@
                     <Button Uid="0" Width="150" Content="HOME" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF383434" FontWeight="Bold" Click="BtnMenu"/>
                     <Button Uid="1" Width="150" Content="AGENDA" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF383434" FontWeight="Bold" Click="BtnAgenda"/>
                     <Button Uid="2" Width="150" Content="CLIENTES" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF383434" FontWeight="Bold" Click="BtnClientes"/>
-                    <Button Uid="3" Width="150" Content="PAGAMENTO" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF383434" FontWeight="Bold" Click="Button_Click"/>
+                    <Button Uid="3" Width="150" Content="PAGAMENTO" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF383434" FontWeight="Bold" Click="BtnAgenda"/>
                     <Button Uid="4" Width="150" Content="PROCEDIMENTOS" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF383434" FontWeight="Bold" Click="BtnProcedimentos"/>
-                    <Button Uid="5" Width="150" Content="PRODUTOS" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF383434" FontWeight="Bold" Click="Button_Click"/>
+                    <Button Uid="5" Width="150" Content="PRODUTOS" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF383434" FontWeight="Bold" Click="BtnProdutos"/>
                     <Button Uid="6" Width="150" Content="FUNCIONÁRIOS" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF383434" FontWeight="Bold" Click="BtnFuncionarios"/>
                 </StackPanel>
                 <Grid x:Name="GridCursor" Width="150" Height="5" Background="#FFDFCAFD" HorizontalAlignment="Left" Margin="10,30,0,0"/>
