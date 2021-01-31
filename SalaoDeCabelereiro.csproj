@@ -55,6 +55,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Banco\AgendaDAO.cs" />
+    <Compile Include="Banco\AnamneseDAO.cs" />
+    <Compile Include="Banco\ClienteDAO.cs" />
+    <Compile Include="Banco\FuncionarioDAO.cs" />
+    <Compile Include="Banco\ProcedimentoDAO.cs" />
+    <Compile Include="Banco\ProdutoDAO.cs" />
+    <Compile Include="Model\AgendaModel.cs" />
+    <Compile Include="Model\AnamneseModel.cs" />
+    <Compile Include="Model\ClienteModel.cs" />
+    <Compile Include="Model\FuncionarioModel.cs" />
+    <Compile Include="Model\ProcedimentoModel.cs" />
+    <Compile Include="Model\ProdutoModel.cs" />
+    <Compile Include="ViewModel\AgendaViewModel.cs" />
+    <Compile Include="ViewModel\AnamneseViewModel.cs" />
+    <Compile Include="ViewModel\ClienteViewModel.cs" />
+    <Compile Include="ViewModel\FuncionarioViewModel.cs" />
+    <Compile Include="ViewModel\ProcedimentoViewModel.cs" />
+    <Compile Include="ViewModel\ProdutoViewModel.cs" />
     <Compile Include="View\AgendaView.xaml.cs">
       <DependentUpon>AgendaView.xaml</DependentUpon>
     </Compile>
@@ -66,6 +84,9 @@
     </Compile>
     <Compile Include="View\FuncionarioView.xaml.cs">
       <DependentUpon>FuncionarioView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ListaProdutosView.xaml.cs">
+      <DependentUpon>ListaProdutosView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
@@ -96,6 +117,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\FuncionarioView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ListaProdutosView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -142,10 +167,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-    <Folder Include="ViewModel\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Imagens\logoSalao.png" />
   </ItemGroup>

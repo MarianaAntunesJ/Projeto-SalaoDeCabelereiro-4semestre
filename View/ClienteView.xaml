@@ -24,16 +24,20 @@
         <Label x:Name="LbCPF" Content="CPF:" HorizontalAlignment="Left" Margin="707,196,0,0" VerticalAlignment="Top" Height="30" Width="101" FontWeight="Bold"/>
         <TextBox x:Name="TxBCPF" IsReadOnly="True" HorizontalAlignment="Left" Height="26" Margin="836,194,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="211"/>
         <Label x:Name="LbSexo" Content="Sexo" HorizontalAlignment="Left" Margin="707,228,0,0" VerticalAlignment="Top" Height="29" Width="101" FontWeight="Bold"/>
-        <ComboBox x:Name="CBProfissional" HorizontalAlignment="Left" Margin="836,223,0,0" VerticalAlignment="Top" Width="211" Height="28">
+        <ComboBox x:Name="CBSexo" HorizontalAlignment="Left" Margin="836,223,0,0" VerticalAlignment="Top" Width="211" Height="28">
             <ComboBoxItem x:Name="CBIFeminino" Content="Feminino"/>
             <ComboBoxItem x:Name="CBIMasculino" Content="Masculino"/>
             <ComboBoxItem x:Name="CBIOutro" Content="Outro"/>
         </ComboBox>
+        <Label x:Name="LbStatus" Content="Status" HorizontalAlignment="Left" Margin="707,285,0,0" VerticalAlignment="Top" Height="30" Width="111" FontWeight="Bold" RenderTransformOrigin="0.5,0.5"/>
+        <CheckBox x:Name="CBAtivo" Content="Ativo" HorizontalAlignment="Left" Margin="836,292,0,0" VerticalAlignment="Top" Height="15" Width="117" FontWeight="Bold"/>
+        <Button Name="BTNAnamnese" Content="Ficha de Anamnese" HorizontalAlignment="Left" Margin="815,339,0,0" VerticalAlignment="Top" Width="162" Height="19" Click="BtnAnamnese"/>
+        <Rectangle Fill="White" HorizontalAlignment="Left" Height="3" Margin="702,309,0,0" VerticalAlignment="Top" Width="364" RadiusY="1" RadiusX="1"/>
+        <DatePicker HorizontalAlignment="Left" VerticalAlignment="Top" Margin="836,254,0,0" Width="211"/>
         <Label x:Name="LbDataNascimento" Content="Data de nascimento:" HorizontalAlignment="Left" Margin="707,256,0,0" VerticalAlignment="Top" Height="30" Width="124" FontWeight="Bold" RenderTransformOrigin="0.5,0.5"/>
         <Button x:Name="BtNovoCadastro" Content="Novo cadastro" HorizontalAlignment="Left" Margin="818,426,0,0" VerticalAlignment="Top" Width="147" Height="22"/>
         <Button x:Name="BtSalvar" Content="Salvar" HorizontalAlignment="Left" Margin="629,483,0,0" VerticalAlignment="Top" Width="96" Height="22" />
         <Button x:Name="BtSair00" Content="Sair" HorizontalAlignment="Left" VerticalAlignment="Top" Width="95" Margin="441,483,0,0" Height="22"/>
-        <Button Name="BTNAnamnese" Content="Ficha de Anamnese" HorizontalAlignment="Left" Margin="815,339,0,0" VerticalAlignment="Top" Width="162" Height="19" Click="BtnAnamnese"/>
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="3" Margin="702,131,0,0" VerticalAlignment="Top" Width="364" RadiusY="1" RadiusX="1"/>
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="3" Margin="702,163,0,0" VerticalAlignment="Top" Width="364" RadiusY="1" RadiusX="1"/>
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="3" Margin="702,191,0,0" VerticalAlignment="Top" Width="364" RadiusY="1" RadiusX="1"/>
@@ -42,9 +46,5 @@
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="3" Margin="702,280,0,0" VerticalAlignment="Top" Width="364" RadiusY="1" RadiusX="1"/>
         <Rectangle Fill="WhiteSmoke" HorizontalAlignment="Left" Height="3" Margin="818,79,0,0" VerticalAlignment="Top" Width="130" RadiusY="1" RadiusX="1"/>
         <Frame Name="SecondFrame" Content="" Visibility="Hidden" HorizontalAlignment="Left" Height="520" VerticalAlignment="Top" Width="1080"/>
-        <Label x:Name="LbStatus" Content="Status" HorizontalAlignment="Left" Margin="707,285,0,0" VerticalAlignment="Top" Height="30" Width="111" FontWeight="Bold" RenderTransformOrigin="0.5,0.5"/>
-        <CheckBox x:Name="CBAtivo" Content="Ativo" HorizontalAlignment="Left" Margin="836,292,0,0" VerticalAlignment="Top" Height="15" Width="117" FontWeight="Bold"/>
-        <Rectangle Fill="White" HorizontalAlignment="Left" Height="3" Margin="702,309,0,0" VerticalAlignment="Top" Width="364" RadiusY="1" RadiusX="1"/>
-        <DatePicker HorizontalAlignment="Left" VerticalAlignment="Top" Margin="836,254,0,0" Width="211"/>
     </Grid>
 </Page>
