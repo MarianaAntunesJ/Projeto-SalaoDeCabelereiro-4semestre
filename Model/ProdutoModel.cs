@@ -9,6 +9,10 @@
         public int Quantidade { get; set; }
         public bool Ativo { get; set; }
 
+        public ProdutoModel()
+        {
+        }
+
         public ProdutoModel(int id, string nome, double peso, string medicao, int quantidade, bool ativo)
         {
             Id = id;

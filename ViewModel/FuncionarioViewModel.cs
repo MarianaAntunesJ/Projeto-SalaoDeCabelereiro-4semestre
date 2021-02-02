@@ -8,18 +8,18 @@ namespace SalaoDeCabelereiro.ViewModel
 {
     public class FuncionarioViewModel : INotifyPropertyChanged
     {
-        private FuncionarioModel _funcionario { get; set; }
+        private ClienteModel _funcionario { get; set; }
         private FuncionarioDAO _funcionarioDAO;
 
-        private ObservableCollection<FuncionarioModel> _funcionarios { get; set; }
+        private ObservableCollection<ClienteModel> _funcionarios { get; set; }
 
-        public FuncionarioModel Funcionario
+        public ClienteModel Funcionario
         {
             get { return _funcionario; }
             set { _funcionario = value; OnPropertyChanged("Funcionario"); }
         }
 
-        public ObservableCollection<FuncionarioModel> Funcionarios
+        public ObservableCollection<ClienteModel> Funcionarios
         {
             get { return _funcionarios; }
             set { _funcionarios = value; OnPropertyChanged("Funcionarios"); }
@@ -39,7 +39,7 @@ namespace SalaoDeCabelereiro.ViewModel
 
         public void LimparUsuarioAtualTela()
         {
-            Funcionario = new FuncionarioModel();
+            Funcionario = new ClienteModel();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

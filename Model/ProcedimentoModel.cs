@@ -8,17 +8,21 @@ namespace SalaoDeCabelereiro.Model
         public string Nome { get; set; }
         public int Duracao { get; set; }
         public string AreaProfissional { get; set; }
-        public bool Ativo { get; set; }
         public List<ProdutoModel> Produtos { get; set; }
+        public bool Ativo { get; set; }
 
-        public ProcedimentoModel(int id, string nome, int duracao, string areaProfissional, bool ativo, List<ProdutoModel> produtos)
+        public ProcedimentoModel()
+        {
+        }
+
+        public ProcedimentoModel(int id, string nome, int duracao, string areaProfissional, List<ProdutoModel> produtos, bool ativo)
         {
             Id = id;
             Nome = nome;
             Duracao = duracao;
             AreaProfissional = areaProfissional;
-            Ativo = ativo;
             Produtos = produtos;
+            Ativo = ativo;            
         }
     }
 }

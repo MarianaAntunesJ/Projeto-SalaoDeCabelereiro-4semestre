@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SalaoDeCabelereiro.Model
 {
-    class AnamneseModel
+    public class AnamneseModel
     {
     }
 }

@@ -10,16 +10,20 @@ namespace SalaoDeCabelereiro.Model
     {
         public int Id { get; set; }
         public ClienteModel Cliente { get; set; }
-        public FuncionarioModel Profissional { get; set; }
+        public FuncionarioModel Funcionario { get; set; }
         public ProcedimentoModel Procedimento { get; set; }
         public DateTime Horario { get; set; }
         public bool Ativo { get; set; }
 
-        public AgendaModel(int id, ClienteModel cliente, FuncionarioModel profissional, ProcedimentoModel procedimento, DateTime horario, bool ativo)
+        public AgendaModel()
+        {
+        }
+
+        public AgendaModel(int id, ClienteModel cliente, FuncionarioModel funcionario, ProcedimentoModel procedimento, DateTime horario, bool ativo)
         {
             Id = id;
             Cliente = cliente;
-            Profissional = profissional;
+            Funcionario = funcionario;
             Procedimento = procedimento;
             Horario = horario;
             Ativo = ativo;

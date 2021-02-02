@@ -1,11 +1,8 @@
 ﻿using SalaoDeCabelereiro.Model;
-using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace SalaoDeCabelereiro.Banco
 {
@@ -21,11 +18,14 @@ namespace SalaoDeCabelereiro.Banco
             Cmd = new SqlCommand();
         }
 
-        public bool Inserir(FuncionarioModel funcionario)
+        private void GetConexao() //ToDo: nome ideal para esta função
         {
             Cmd.Connection = Conexao.RetornarConexao();
-            Cmd.CommandText = $@"{ConsultaHelper.GetInsertInto(_tabela)} (@Nome, @Telefone @CPF, @Email, @Profissao, @Ativo, @Usuario, @Senha)";
+        }
 
+        private bool DadosFuncionario(FuncionarioModel funcionario)
+        {
+            GetConexao();
             Cmd.Parameters.Clear();
             Cmd.Parameters.AddWithValue("@Nome", funcionario.Nome);
             Cmd.Parameters.AddWithValue("@Telefone", funcionario.Telefone);
@@ -42,24 +42,29 @@ namespace SalaoDeCabelereiro.Banco
                 return false;
         }
 
-        private List<FuncionarioModel> BuscaCliente()
+        public void Inserir(FuncionarioModel funcionario)
+        {
+            Cmd.CommandText = $@"{ConsultaHelper.GetInsertInto(_tabela)} (@Nome, @Telefone @CPF, @Email, @Profissao, @Ativo, @Usuario, @Senha)";
+            DadosFuncionario(funcionario);
+        }
+
+        private List<FuncionarioModel> GetFuncionario()
         {
             SqlDataReader rd = Cmd.ExecuteReader();
             List<FuncionarioModel> funcionarios = new List<FuncionarioModel>();
 
             while (rd.Read())
             {
-                FuncionarioModel funcionario =
-                    new FuncionarioModel(
+                FuncionarioModel funcionario = new FuncionarioModel(
                         (int)rd[nameof(FuncionarioModel.Id)],
-                        (string)rd["Nome"],
-                        (string)rd["Telefone"],
-                        (string)rd["CPF"],
-                        (string)rd["Profissao"],
-                        (string)rd["Email"],
-                        (bool)rd["Ativo"],
-                        (string)rd["Usuario"],
-                        (string)rd["Senha"]);
+                        (string)rd[nameof(FuncionarioModel.Nome)],
+                        (string)rd[nameof(FuncionarioModel.Telefone)],
+                        (string)rd[nameof(FuncionarioModel.CPF)],
+                        (string)rd[nameof(FuncionarioModel.Profissao)],
+                        (string)rd[nameof(FuncionarioModel.Email)],
+                        (bool)rd[nameof(FuncionarioModel.Ativo)],
+                        (string)rd[nameof(FuncionarioModel.Usuario)],
+                        (string)rd[nameof(FuncionarioModel.Senha)]);
 
                 funcionarios.Add(funcionario);
             }
@@ -69,54 +74,30 @@ namespace SalaoDeCabelereiro.Banco
 
         public void Listar()
         {
-            Cmd.Connection = Conexao.RetornarConexao();
-            Cmd.CommandText = "SELECT * FROM Funcionario";
-            BuscaCliente();
+            GetConexao();
+            Cmd.CommandText = $"{ConsultaHelper.GetSelectFrom(_tabela)}";
+
+            GetFuncionario();
         }
 
-        public List<FuncionarioModel> Consultar(string busca)
+        public void Consultar(string busca)
         {
-            busca = $"%{busca}%";
-            Cmd.Connection = Conexao.RetornarConexao();
-            Cmd.CommandText = "SELECT * FROM Cliente WHERE CPF LIKE @busca OR Nome LIKE @busca";
+            GetConexao();
+            busca = $"%{busca}%";            
+            Cmd.CommandText = $"{ConsultaHelper.GetSelectFrom(_tabela)} WHERE CPF LIKE @busca OR Nome LIKE @busca";
 
             Cmd.Parameters.Clear();
             Cmd.Parameters.AddWithValue("@busca", busca);
 
-            SqlDataReader rd = Cmd.ExecuteReader();
-            List<FuncionarioModel> funcionarios = new List<FuncionarioModel>();
-
-            while (rd.Read())
-            {
-
-                FuncionarioModel funcionario = new FuncionarioModel((int)rd["Id"], (string)rd["Nome"], (string)rd["Telefone"], (string)rd["CPF"],
-                    (string)rd["Profissao"], (string)rd["Email"], (bool)rd["Ativo"], (string)rd["Usuario"], (string)rd["Senha"]);
-                funcionarios.Add(funcionario);
-            }
-            rd.Close();
-            return funcionarios;
+            GetFuncionario();
         }
 
-        public bool Atualizar(ClienteModel cliente)
+        public void Atualizar(FuncionarioModel funcionario)
         {
-            Cmd.Connection = Conexao.RetornarConexao();
-            Cmd.CommandText = @"UPDATE Cliente SET Nome = @Nome, CPF = @CPF, Email = @Email, DataNascimento = @DataNascimento, Ativo = @Ativo, Sexo = @Sexo, EstadoCivil = @EstadoCivil, Imagem = @Imagem  WHERE Id = @id";
-
-            Cmd.Parameters.Clear();
-            Cmd.Parameters.AddWithValue("@Id", cliente.Id);
-            Cmd.Parameters.AddWithValue("@nome", cliente.Nome);
-            Cmd.Parameters.AddWithValue("@CPF", cliente.CPF);
-            Cmd.Parameters.AddWithValue("@Email", cliente.Email);
-            Cmd.Parameters.AddWithValue("@DataNascimento", Convert.ToDateTime(cliente.DataNascimento).ToShortDateString());
-            Cmd.Parameters.AddWithValue("@Ativo", cliente.Ativo);
-            Cmd.Parameters.AddWithValue("@Sexo", cliente.Sexo);
-            Cmd.Parameters.AddWithValue("@EstadoCivil", cliente.EstadoCivil);
-            Cmd.Parameters.AddWithValue("@Imagem", cliente.Imagem);
-
-
-            if (Cmd.ExecuteNonQuery() == 1)
-                return true;
-            return false;
+            GetConexao();
+            Cmd.CommandText = $@"{ConsultaHelper.GetUpdateSet(_tabela)} Nome = @Nome, Telefone = @Telefone, CPF = @CPF, Profissao = @Profissao, Email = @Email, Ativo = @Ativo, Usuario = @Usuario, Senha = @Senha  WHERE Id = @id";
+            
+            DadosFuncionario(funcionario);
         }
 
         static public string GerarHashMd5(string entrada)
