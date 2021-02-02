@@ -58,6 +58,8 @@
     <Compile Include="Banco\AgendaDAO.cs" />
     <Compile Include="Banco\AnamneseDAO.cs" />
     <Compile Include="Banco\ClienteDAO.cs" />
+    <Compile Include="Banco\Conexao.cs" />
+    <Compile Include="Banco\ConsultaHelper.cs" />
     <Compile Include="Banco\FuncionarioDAO.cs" />
     <Compile Include="Banco\ProcedimentoDAO.cs" />
     <Compile Include="Banco\ProdutoDAO.cs" />

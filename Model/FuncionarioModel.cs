@@ -1,6 +1,6 @@
 ﻿namespace SalaoDeCabelereiro.Model
 {
-    class FuncionarioModel
+    public class FuncionarioModel
     {
         public int Id { get; set; }
         public string Nome { get; set; }
@@ -11,6 +11,10 @@
         public bool Ativo { get; set; }
         public string Usuario { get; set; }
         public string Senha { get; set; }
+
+        public FuncionarioModel()
+        {
+        }
 
         public FuncionarioModel(int id, string nome, string telefone, string cpf, string profissao, string email, bool ativo, string usuario, string senha)
         {
