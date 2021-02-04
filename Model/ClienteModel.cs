@@ -17,7 +17,18 @@ namespace SalaoDeCabelereiro.Model
         {
         }
 
-        public ClienteModel(int id, string nome, string telefone, string cpf, string sexo, DateTime dataNascimento, AnamneseModel fichaAnamnese, bool ativo)
+        public ClienteModel(int id, string nome, string telefone, string cPF, string sexo, DateTime dataNascimento, bool ativo)
+        {
+            Id = id;
+            Nome = nome;
+            Telefone = telefone;
+            CPF = cPF;
+            Sexo = sexo;
+            DataNascimento = dataNascimento;
+            Ativo = ativo;
+        }
+
+        /*public ClienteModel(int id, string nome, string telefone, string cpf, string sexo, DateTime dataNascimento, AnamneseModel fichaAnamnese, bool ativo)
         {
             Id = id;
             Nome = nome;
@@ -27,6 +38,6 @@ namespace SalaoDeCabelereiro.Model
             DataNascimento = dataNascimento;
             FichaAnamnese = fichaAnamnese;
             Ativo = ativo;
-        }
+        }*/
     }
 }

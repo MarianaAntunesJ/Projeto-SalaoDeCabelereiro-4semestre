@@ -30,8 +30,7 @@ namespace SalaoDeCabelereiro.Banco
             Cmd.Parameters.AddWithValue("@Telefone", cliente.Telefone);
             Cmd.Parameters.AddWithValue("@CPF", cliente.CPF);
             Cmd.Parameters.AddWithValue("@Sexo", cliente.Sexo);
-            Cmd.Parameters.AddWithValue("@DataNascimento", cliente.DataNascimento);
-            Cmd.Parameters.AddWithValue("@FichaAnamnese", cliente.FichaAnamnese);
+            Cmd.Parameters.AddWithValue("@DataNascimento", Convert.ToDateTime(cliente.DataNascimento).ToShortDateString());
             Cmd.Parameters.AddWithValue("@Ativo", true);
 
             if (Cmd.ExecuteNonQuery() == 1)
@@ -40,10 +39,10 @@ namespace SalaoDeCabelereiro.Banco
                 return false;
         }
 
-        public void Inserir(ClienteModel cliente)
+        public bool Inserir(ClienteModel cliente)
         {
-            Cmd.CommandText = $@"{ConsultaHelper.GetInsertInto(_tabela)} (@Nome, @Telefone @CPF, @Sexo, @DataNascimento, @FichaAnamnese, @Ativo)";
-            DadosCliente(cliente);
+            Cmd.CommandText = $@"{ConsultaHelper.GetInsertInto(_tabela)} (@Nome, @Telefone, @CPF, @Sexo, @DataNascimento, @Ativo)";
+            return DadosCliente(cliente);
         }
 
         private List<ClienteModel> GetCliente()
@@ -60,7 +59,6 @@ namespace SalaoDeCabelereiro.Banco
                         (string)rd[nameof(ClienteModel.CPF)],
                         (string)rd[nameof(ClienteModel.Sexo)],
                         (DateTime)rd[nameof(ClienteModel.DataNascimento)],
-                        (AnamneseModel)rd[nameof(ClienteModel.FichaAnamnese)],
                         (bool)rd[nameof(ClienteModel.Ativo)]);
 
                 clientes.Add(cliente);
@@ -89,12 +87,12 @@ namespace SalaoDeCabelereiro.Banco
             return GetCliente();
         }
 
-        public void Atualizar(ClienteModel cliente)
+        public bool Atualizar(ClienteModel cliente)
         {
             GetConexao();
-            Cmd.CommandText = $@"{ConsultaHelper.GetUpdateSet(_tabela)} Nome = @Nome, Telefone = @Telefone, CPF = @CPF, Sexo = @Sexo, DataNascimento = @DataNascimento, FichaAnamnese = @FichaAnamnese, Ativo = @Ativo  WHERE Id = @id";
+            Cmd.CommandText = $@"{ConsultaHelper.GetUpdateSet(_tabela)} Nome = @Nome, Telefone = @Telefone, CPF = @CPF, Sexo = @Sexo, DataNascimento = @DataNascimento, Ativo = @Ativo  WHERE Id = @id";
 
-            DadosCliente(cliente);
+            return DadosCliente(cliente);
         }
     }
 }

@@ -1,22 +1,18 @@
 ﻿using SalaoDeCabelereiro.Banco;
 using SalaoDeCabelereiro.Model;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SalaoDeCabelereiro.ViewModel
 {
-    class ClienteViewModel
+    class ClienteViewModel : INotifyPropertyChanged
     {
 
         private ClienteModel _cliente { get; set; }
         private ClienteDAO _clienteDAO;
 
-        private ObservableCollection<ClienteModel> _funcionarios { get; set; }
+        private ObservableCollection<ClienteModel> _clientes { get; set; }
 
         public ClienteModel Cliente
         {
@@ -24,27 +20,54 @@ namespace SalaoDeCabelereiro.ViewModel
             set { _cliente = value; OnPropertyChanged("Cliente"); }
         }
 
-        public ObservableCollection<ClienteModel> Funcionarios
+        public ObservableCollection<ClienteModel> Clientes
         {
-            get { return _funcionarios; }
-            set { _funcionarios = value; OnPropertyChanged("Clientes"); }
+            get { return _clientes; }
+            set { _clientes = value; OnPropertyChanged("Clientes"); }
         }
 
         public ClienteViewModel()
         {
-            LimparUsuarioAtualTela();
+            LimparUsuarioAtual();
             _clienteDAO = new ClienteDAO();
             AtualizarLista();
+            _cliente = new ClienteModel();
+        }
+
+        public bool Salvar()
+        {
+            bool sucesso;
+            if (_cliente.Id == 0)
+                sucesso = _clienteDAO.Inserir(_cliente);
+            else
+                sucesso = _clienteDAO.Atualizar(_cliente);
+            if (sucesso)
+            {
+                AtualizarLista();
+                LimparUsuarioAtual();
+                return true;
+            }
+            return false;
         }
 
         private void AtualizarLista()
         {
-            Funcionarios = new ObservableCollection<ClienteModel>(_clienteDAO.Listar());
+            Clientes = new ObservableCollection<ClienteModel>(_clienteDAO.Listar());
         }
 
-        public void LimparUsuarioAtualTela()
+        public void Consultar(string busca)
         {
-            Cliente = new ClienteModel();
+            Clientes = new ObservableCollection<ClienteModel>(_clienteDAO.Consultar(busca));
+        }
+
+        public void Selecionar(int index)
+        {
+            Cliente = Clientes[index];
+        }
+
+        public void LimparUsuarioAtual()
+        {
+            Cliente = new ClienteModel { DataNascimento = DateTime.Today }; ;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

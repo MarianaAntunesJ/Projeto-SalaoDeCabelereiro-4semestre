@@ -6,7 +6,7 @@ namespace SalaoDeCabelereiro.Model
     {
         public int Id { get; set; }
         public string Nome { get; set; }
-        public int Duracao { get; set; }
+        public double Duracao { get; set; } //ToDo = arrumar tipo de duração int => double
         public string AreaProfissional { get; set; }
         public List<ProdutoModel> Produtos { get; set; }
         public bool Ativo { get; set; }
@@ -15,7 +15,7 @@ namespace SalaoDeCabelereiro.Model
         {
         }
 
-        public ProcedimentoModel(int id, string nome, int duracao, string areaProfissional, List<ProdutoModel> produtos, bool ativo)
+        public ProcedimentoModel(int id, string nome, double duracao, string areaProfissional, List<ProdutoModel> produtos, bool ativo)
         {
             Id = id;
             Nome = nome;
