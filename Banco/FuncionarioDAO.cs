@@ -72,15 +72,15 @@ namespace SalaoDeCabelereiro.Banco
             return funcionarios;
         }
 
-        public void Listar()
+        public List<FuncionarioModel> Listar()
         {
             GetConexao();
             Cmd.CommandText = $"{ConsultaHelper.GetSelectFrom(_tabela)}";
 
-            GetFuncionario();
+            return GetFuncionario();
         }
 
-        public void Consultar(string busca)
+        public List<FuncionarioModel> Consultar(string busca)
         {
             GetConexao();
             busca = $"%{busca}%";            
@@ -89,7 +89,7 @@ namespace SalaoDeCabelereiro.Banco
             Cmd.Parameters.Clear();
             Cmd.Parameters.AddWithValue("@busca", busca);
 
-            GetFuncionario();
+           return GetFuncionario();
         }
 
         public void Atualizar(FuncionarioModel funcionario)

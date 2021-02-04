@@ -67,15 +67,15 @@ namespace SalaoDeCabelereiro.Banco
             return agendamentos;
         }
 
-        public void Listar()
+        public List<AgendaModel> Listar()
         {
             GetConexao();
             Cmd.CommandText = $"{ConsultaHelper.GetSelectFrom(_tabela)}";
 
-            GetProduto();
+            return GetProduto();
         }
 
-        public void Consultar(string busca)
+        public List<AgendaModel> Consultar(string busca)
         {
             GetConexao();
             busca = $"%{busca}%";
@@ -84,7 +84,7 @@ namespace SalaoDeCabelereiro.Banco
             Cmd.Parameters.Clear();
             Cmd.Parameters.AddWithValue("@busca", busca);
 
-            GetProduto();
+            return GetProduto();
         }
 
         public void Atualizar(AgendaModel agendamento)

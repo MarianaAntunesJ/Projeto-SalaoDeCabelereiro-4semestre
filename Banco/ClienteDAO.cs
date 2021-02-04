@@ -69,15 +69,15 @@ namespace SalaoDeCabelereiro.Banco
             return clientes;
         }
 
-        public void Listar()
+        public List<ClienteModel> Listar()
         {
             GetConexao();
             Cmd.CommandText = $"{ConsultaHelper.GetSelectFrom(_tabela)}";
 
-            GetCliente();
+            return GetCliente();
         }
 
-        public void Consultar(string busca)
+        public List<ClienteModel> Consultar(string busca)
         {
             GetConexao();
             busca = $"%{busca}%";
@@ -86,7 +86,7 @@ namespace SalaoDeCabelereiro.Banco
             Cmd.Parameters.Clear();
             Cmd.Parameters.AddWithValue("@busca", busca);
 
-            GetCliente();
+            return GetCliente();
         }
 
         public void Atualizar(ClienteModel cliente)

@@ -13,6 +13,10 @@ namespace SalaoDeCabelereiro.Model
         public AnamneseModel FichaAnamnese { get; set; }
         public bool Ativo { get; set; }
 
+        public ClienteModel()
+        {
+        }
+
         public ClienteModel(int id, string nome, string telefone, string cpf, string sexo, DateTime dataNascimento, AnamneseModel fichaAnamnese, bool ativo)
         {
             Id = id;
