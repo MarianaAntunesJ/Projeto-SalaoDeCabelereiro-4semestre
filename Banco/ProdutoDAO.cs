@@ -24,8 +24,7 @@ namespace SalaoDeCabelereiro.Banco
 
         private bool DadosProduto(ProdutoModel produto)
         {
-            GetConexao();
-            Cmd.Parameters.Clear();
+            
             Cmd.Parameters.AddWithValue("@Nome", produto.Nome);
             Cmd.Parameters.AddWithValue("@Peso", produto.Peso);
             Cmd.Parameters.AddWithValue("@Medicao", produto.Medicao);
@@ -38,10 +37,12 @@ namespace SalaoDeCabelereiro.Banco
                 return false;
         }
 
-        public void Inserir(ProdutoModel produto)
+        public bool Inserir(ProdutoModel produto)
         {
-            Cmd.CommandText = $@"{ConsultaHelper.GetInsertInto(_tabela)} (@Nome, @Peso @Medicao, @Quantidade, @Ativo)";
-            DadosProduto(produto);
+            Cmd.CommandText = $@"{ConsultaHelper.GetInsertInto(_tabela)} (@Nome, @Peso, @Medicao, @Quantidade, @Ativo)";
+            GetConexao();
+            Cmd.Parameters.Clear();
+            return DadosProduto(produto);
         }
 
         private List<ProdutoModel> GetProduto()
@@ -85,12 +86,14 @@ namespace SalaoDeCabelereiro.Banco
             return GetProduto();
         }
 
-        public void Atualizar(ProdutoModel produto)
+        public bool Atualizar(ProdutoModel produto)
         {
             GetConexao();
             Cmd.CommandText = $@"{ConsultaHelper.GetUpdateSet(_tabela)} Nome = @Nome, Peso = @Peso, Medicao = @Medicao, Quantidade = @Quantidade, Ativo = @Ativo  WHERE Id = @id";
+            GetConexao();
+            Cmd.Parameters.AddWithValue("@Id", produto.Id);
 
-            DadosProduto(produto);
+            return DadosProduto(produto);
         }
     }
 }

@@ -5,7 +5,7 @@ using System.ComponentModel;
 
 namespace SalaoDeCabelereiro.ViewModel
 {
-    class ProdutoViewModel
+    class ProdutoViewModel : INotifyPropertyChanged
     {
         private ProdutoModel _produto { get; set; }
         private ProdutoDAO _produtoDAO;
@@ -26,9 +26,25 @@ namespace SalaoDeCabelereiro.ViewModel
 
         public ProdutoViewModel()
         {
-            LimparUsuarioAtualTela();
+            LimparUsuarioAtual();
             _produtoDAO = new ProdutoDAO();
             AtualizarLista();
+        }
+
+        public bool Salvar()
+        {
+            bool sucesso;
+            if (_produto.Id == 0)
+                sucesso = _produtoDAO.Inserir(_produto);
+            else
+                sucesso = _produtoDAO.Atualizar(_produto);
+            if (sucesso)
+            {
+                AtualizarLista();
+                LimparUsuarioAtual();
+                return true;
+            }
+            return false;
         }
 
         private void AtualizarLista()
@@ -36,7 +52,18 @@ namespace SalaoDeCabelereiro.ViewModel
             Produtos = new ObservableCollection<ProdutoModel>(_produtoDAO.Listar());
         }
 
-        public void LimparUsuarioAtualTela()
+        public void Consultar(string busca)
+        {
+            Produtos = new ObservableCollection<ProdutoModel>(_produtoDAO.Consultar(busca));
+        }
+
+        public void Selecionar(int index)
+        {
+            Produto = Produtos[index];
+        }
+
+
+        public void LimparUsuarioAtual()
         {
             Produto = new ProdutoModel();
         }
