@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SalaoDeCabelereiro.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,26 @@ namespace SalaoDeCabelereiro.View
     /// </summary>
     public partial class ListaProdutosView : Page
     {
+        private ProdutoViewModel _produtoViewModel { get; set; }
+
         public ListaProdutosView()
         {
             InitializeComponent();
+            _produtoViewModel = new ProdutoViewModel();
+            DataContext = _produtoViewModel;
+        }
+
+        private void DGProdutos_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (DGProdutos.Items.IndexOf(DGProdutos.CurrentItem) >= 0)
+            {
+                _produtoViewModel.Selecionar(DGProdutos.Items.IndexOf(DGProdutos.CurrentItem));
+            }
+        }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

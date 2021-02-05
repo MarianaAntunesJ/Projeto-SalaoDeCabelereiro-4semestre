@@ -5,9 +5,6 @@ using System.Windows.Controls;
 
 namespace SalaoDeCabelereiro.View
 {
-    /// <summary>
-    /// Interação lógica para ClienteView.xam
-    /// </summary>
     public partial class ClienteView : Page
     {
         private ClienteViewModel _clienteViewModel { get; set; }
@@ -28,8 +25,8 @@ namespace SalaoDeCabelereiro.View
 
         private void BtnAnamnese(object sender, RoutedEventArgs e)
         {
-            /*SecondFrame.Visibility = Visibility.Visible;
-            SecondFrame.Content = new AnamneseView();*/
+            SecondFrame.Visibility = Visibility.Visible;
+            SecondFrame.Content = new AnamneseView();
         }
 
         private void TxBPesquisa_TextChanged(object sender, TextChangedEventArgs e)

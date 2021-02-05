@@ -5,7 +5,7 @@ using System.ComponentModel;
 
 namespace SalaoDeCabelereiro.ViewModel
 {
-    class ProcedimentoViewModel
+    class ProcedimentoViewModel : INotifyPropertyChanged
     {
         private ProcedimentoModel _procedimento { get; set; }
         private ProcedimentoDAO _procedimentoDAO;
@@ -26,9 +26,25 @@ namespace SalaoDeCabelereiro.ViewModel
 
         public ProcedimentoViewModel()
         {
-            LimparUsuarioAtualTela();
+            LimparUsuarioAtual();
             _procedimentoDAO = new ProcedimentoDAO();
             AtualizarLista();
+        }
+
+        public bool Salvar()
+        {
+            bool sucesso;
+            if (_procedimento.Id == 0)
+                sucesso = _procedimentoDAO.Inserir(_procedimento);
+            else
+                sucesso = _procedimentoDAO.Atualizar(_procedimento);
+            if (sucesso)
+            {
+                AtualizarLista();
+                LimparUsuarioAtual();
+                return true;
+            }
+            return false;
         }
 
         private void AtualizarLista()
@@ -36,7 +52,17 @@ namespace SalaoDeCabelereiro.ViewModel
             Procedimentos = new ObservableCollection<ProcedimentoModel>(_procedimentoDAO.Listar());
         }
 
-        public void LimparUsuarioAtualTela()
+        public void Consultar(string busca)
+        {
+            Procedimentos = new ObservableCollection<ProcedimentoModel>(_procedimentoDAO.Consultar(busca));
+        }
+
+        public void Selecionar(int index)
+        {
+            Procedimento = Procedimentos[index];
+        }
+
+        public void LimparUsuarioAtual()
         {
             Procedimento = new ProcedimentoModel();
         }

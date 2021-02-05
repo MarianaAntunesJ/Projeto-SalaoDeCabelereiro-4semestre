@@ -27,9 +27,9 @@ namespace SalaoDeCabelereiro.Banco
             GetConexao();
             Cmd.Parameters.Clear();
             Cmd.Parameters.AddWithValue("@Nome", procedimento.Nome);
-            Cmd.Parameters.AddWithValue("@Peso", procedimento.Duracao);
-            Cmd.Parameters.AddWithValue("@Medicao", procedimento.AreaProfissional);
-            Cmd.Parameters.AddWithValue("@Quantidade", procedimento.Produtos);
+            Cmd.Parameters.AddWithValue("@Duracao", procedimento.Duracao);
+            Cmd.Parameters.AddWithValue("@AreaProfissional", procedimento.AreaProfissional);
+            Cmd.Parameters.AddWithValue("@Produtos", procedimento.Produtos);
             Cmd.Parameters.AddWithValue("@Ativo", true);
 
             if (Cmd.ExecuteNonQuery() == 1)
@@ -38,10 +38,10 @@ namespace SalaoDeCabelereiro.Banco
                 return false;
         }
 
-        public void Inserir(ProcedimentoModel produto)
+        public bool Inserir(ProcedimentoModel produto)
         {
-            Cmd.CommandText = $@"{ConsultaHelper.GetInsertInto(_tabela)} (@Nome, @Duracao @Areaprofissional, @Produtos, @Ativo)";
-            DadosProcedimento(produto);
+            Cmd.CommandText = $@"{ConsultaHelper.GetInsertInto(_tabela)} (@Nome, @Duracao, @Areaprofissional, @Produtos, @Ativo)";
+            return DadosProcedimento(produto);
         }
 
         private List<ProcedimentoModel> GetProduto()
@@ -85,12 +85,12 @@ namespace SalaoDeCabelereiro.Banco
             return GetProduto();
         }
 
-        public void Atualizar(ProcedimentoModel procedimento)
+        public bool Atualizar(ProcedimentoModel procedimento)
         {
             GetConexao();
             Cmd.CommandText = $@"{ConsultaHelper.GetUpdateSet(_tabela)} Nome = @Nome, Duracao = @Duracao, AreaProfissional = @AreaProfissional, Produtos = @Produtos, Ativo = @Ativo  WHERE Id = @id";
 
-            DadosProcedimento(procedimento);
+            return DadosProcedimento(procedimento);
         }
     }
 }
