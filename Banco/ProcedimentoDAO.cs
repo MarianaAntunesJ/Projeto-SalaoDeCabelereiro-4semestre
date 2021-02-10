@@ -1,6 +1,8 @@
 ﻿using SalaoDeCabelereiro.Model;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data.SqlClient;
+using System.Text;
 
 namespace SalaoDeCabelereiro.Banco
 {
@@ -29,19 +31,38 @@ namespace SalaoDeCabelereiro.Banco
             Cmd.Parameters.AddWithValue("@Nome", procedimento.Nome);
             Cmd.Parameters.AddWithValue("@Duracao", procedimento.Duracao);
             Cmd.Parameters.AddWithValue("@AreaProfissional", procedimento.AreaProfissional);
-            Cmd.Parameters.AddWithValue("@Produtos", procedimento.Produtos);
             Cmd.Parameters.AddWithValue("@Ativo", true);
 
+            int modified = (int)Cmd.ExecuteScalar();
+
             if (Cmd.ExecuteNonQuery() == 1)
-                return true;
-            else
-                return false;
+                return InsereProdutosDeProcedimento(modified, procedimento);
+            return false;
         }
 
-        public bool Inserir(ProcedimentoModel produto)
+        private bool InsereProdutosDeProcedimento(int idProcedimento, ProcedimentoModel procedimento)
         {
-            Cmd.CommandText = $@"{ConsultaHelper.GetInsertInto(_tabela)} (@Nome, @Duracao, @Areaprofissional, @Produtos, @Ativo)";
-            return DadosProcedimento(produto);
+            var sb = new StringBuilder();
+
+            foreach (var produto in procedimento.Produtos)
+                sb.Append($"({idProcedimento}, {produto})\t");
+
+            return InserirProdutosDeProcedimento(sb.ToString());
+        }
+
+        private bool InserirProdutosDeProcedimento(string valores)
+        {
+            GetConexao();
+            Cmd.CommandText = $"INSERT INTO ProdutosDeProcedimento VALUES {valores}";
+            if (Cmd.ExecuteNonQuery() == 1)
+                return true;
+            return false;
+        }
+
+        public bool Inserir(ProcedimentoModel procedimento)
+        {
+            Cmd.CommandText = $@"{ConsultaHelper.GetInsertInto(_tabela)} (@Nome, @Duracao, @Areaprofissional, @Ativo)";
+            return DadosProcedimento(procedimento);
         }
 
         private List<ProcedimentoModel> GetProduto()
@@ -56,7 +77,7 @@ namespace SalaoDeCabelereiro.Banco
                         (string)rd[nameof(ProcedimentoModel.Nome)],
                         (int)rd[nameof(ProcedimentoModel.Duracao)],
                         (string)rd[nameof(ProcedimentoModel.AreaProfissional)],
-                        (List<ProdutoModel>)rd[nameof(ProcedimentoModel.Produtos)],
+                        (ObservableCollection<ProdutoModel>)rd[nameof(ProcedimentoModel.Produtos)],
                         (bool)rd[nameof(ProcedimentoModel.Ativo)]);
 
                 procedimentos.Add(procedimento);

@@ -42,6 +42,6 @@
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="3" Margin="706,293,0,0" VerticalAlignment="Top" Width="364" RadiusY="1" RadiusX="1"/>
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="3" Margin="706,322,0,0" VerticalAlignment="Top" Width="364" RadiusY="1" RadiusX="1"/>
         <Rectangle Fill="WhiteSmoke" HorizontalAlignment="Left" Height="3" Margin="795,122,0,0" VerticalAlignment="Top" Width="192" RadiusY="1" RadiusX="1"/>
-        <Frame Name="FMProdutos" Content="" Visibility="Hidden" HorizontalAlignment="Left" Height="387" VerticalAlignment="Top" Width="921"/>
+        <Frame Name="FMProdutos" NavigationUIVisibility="Hidden" HorizontalAlignment="Left" Height="387" VerticalAlignment="Top" Width="725"/>
     </Grid>
 </Page>

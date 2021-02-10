@@ -25,8 +25,7 @@ namespace SalaoDeCabelereiro.View
 
         private void BtnAnamnese(object sender, RoutedEventArgs e)
         {
-            SecondFrame.Visibility = Visibility.Visible;
-            SecondFrame.Content = new AnamneseView();
+            SecondFrame.Navigate(new AnamneseView());
         }
 
         private void TxBPesquisa_TextChanged(object sender, TextChangedEventArgs e)

@@ -1,0 +1,20 @@
+﻿<Page x:Class="SalaoDeCabelereiro.View.ProdutosDeProcedimentoView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SalaoDeCabelereiro.View"
+      DataContext="{Binding RelativeSource={RelativeSource Self}}"
+      mc:Ignorable="d" 
+      d:DesignHeight="387"
+      Title="ProdutosDeProcedimentoView" Width="725">
+
+    <Grid Background="#FFDFCAFD">
+        <DataGrid Name="DGProdutos" ItemsSource="{Binding TodosProdutos}" IsReadOnly="True" HorizontalAlignment="Left" Height="293" Margin="33,69,0,0" VerticalAlignment="Top" Width="293" SelectionChanged="DGProdutos_SelectionChanged"/>
+        <TextBox Name="TxBProduto" HorizontalAlignment="Left" Height="23" Margin="85,41,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="241"/>
+        <Label Name="LBProduto" Content="Produto:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,38,0,0"/>
+        <DataGrid x:Name="DGProdutos_Copy" ItemsSource="{Binding Procedimento}" IsReadOnly="True" HorizontalAlignment="Left" Height="293" Margin="351,69,0,0" VerticalAlignment="Top" Width="293"/>
+        <Button Content="Salvar" HorizontalAlignment="Left" Margin="640,362,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Frame Name="FMProcedimento" NavigationUIVisibility="Hidden" HorizontalAlignment="Left" Height="520" VerticalAlignment="Top" Width="1080"/>
+    </Grid>
+</Page>

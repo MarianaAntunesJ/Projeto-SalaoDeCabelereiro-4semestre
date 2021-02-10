@@ -29,31 +29,31 @@ namespace SalaoDeCabelereiro.View
         private void BtnAgenda(object sender, RoutedEventArgs e)
         {
             ControlaGridCursor(e);
-            FrameMain.Content = new AgendaView();
+            FrameMain.Navigate(new AgendaView());
         }
 
         private void BtnClientes(object sender, RoutedEventArgs e)
         {
             ControlaGridCursor(e);
-            FrameMain.Content = new ClienteView();
+            FrameMain.Navigate(new ClienteView());
         }
 
         private void BtnFuncionarios(object sender, RoutedEventArgs e)
         {
             ControlaGridCursor(e);
-            FrameMain.Content = new FuncionarioView();
+            FrameMain.Navigate(new FuncionarioView());
         }
 
         private void BtnProcedimentos(object sender, RoutedEventArgs e)
         {
             ControlaGridCursor(e);
-            FrameMain.Content = new ProcedimentoView();
+            FrameMain.Navigate(new ProcedimentoView());
         }
 
         private void BtnProdutos(object sender, RoutedEventArgs e)
         {
             ControlaGridCursor(e);
-            FrameMain.Content = new ProdutoView();
+            FrameMain.Navigate(new ProdutoView());
         }
     }
 }

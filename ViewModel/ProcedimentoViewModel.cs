@@ -21,7 +21,7 @@ namespace SalaoDeCabelereiro.ViewModel
         public ObservableCollection<ProcedimentoModel> Procedimentos
         {
             get { return _procedimentos; }
-            set { _procedimentos = value; OnPropertyChanged("Produtos"); }
+            set { _procedimentos = value; OnPropertyChanged("Procedimentos"); }
         }
 
         public ProcedimentoViewModel()
@@ -31,9 +31,14 @@ namespace SalaoDeCabelereiro.ViewModel
             AtualizarLista();
         }
 
+        public void InsereProdutosDeProcedimento(ObservableCollection<ProdutoModel> produtos)
+        {
+            _procedimento.Produtos = produtos;
+        }
+
         public bool Salvar()
         {
-            bool sucesso;
+            bool sucesso;            
             if (_procedimento.Id == 0)
                 sucesso = _procedimentoDAO.Inserir(_procedimento);
             else

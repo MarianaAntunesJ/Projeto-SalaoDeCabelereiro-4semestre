@@ -4,11 +4,9 @@ using System.Windows.Controls;
 
 namespace SalaoDeCabelereiro.View
 {
-    /// <summary>
-    /// Interação lógica para ProcedimentoView.xam
-    /// </summary>
     public partial class ProcedimentoView : Page
     {
+        public object NavigationCacheMode { get; }
         private ProcedimentoViewModel _procedimentoViewModel { get; set; }
 
         public ProcedimentoView()
@@ -20,8 +18,7 @@ namespace SalaoDeCabelereiro.View
 
         private void BtnProdutos_Click(object sender, RoutedEventArgs e)
         {
-            FMProdutos.Visibility = Visibility.Visible;
-            FMProdutos.Content = new ListaProdutosView();
+            FMProdutos.Navigate(new ProdutosDeProcedimentoView());
         }
 
         private void TxBPesquisa_TextChanged(object sender, TextChangedEventArgs e)

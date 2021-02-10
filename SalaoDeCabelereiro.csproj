@@ -74,6 +74,7 @@
     <Compile Include="ViewModel\ClienteViewModel.cs" />
     <Compile Include="ViewModel\FuncionarioViewModel.cs" />
     <Compile Include="ViewModel\ProcedimentoViewModel.cs" />
+    <Compile Include="ViewModel\ProdutosDeProcedimentoViewModel.cs" />
     <Compile Include="ViewModel\ProdutoViewModel.cs" />
     <Compile Include="View\AgendaView.xaml.cs">
       <DependentUpon>AgendaView.xaml</DependentUpon>
@@ -87,8 +88,8 @@
     <Compile Include="View\FuncionarioView.xaml.cs">
       <DependentUpon>FuncionarioView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ListaProdutosView.xaml.cs">
-      <DependentUpon>ListaProdutosView.xaml</DependentUpon>
+    <Compile Include="View\ProdutosDeProcedimentoView.xaml.cs">
+      <DependentUpon>ProdutosDeProcedimentoView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
@@ -125,7 +126,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ListaProdutosView.xaml">
+    <Page Include="View\ProdutosDeProcedimentoView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

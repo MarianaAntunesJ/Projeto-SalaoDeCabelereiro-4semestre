@@ -45,6 +45,6 @@
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="3" Margin="702,251,0,0" VerticalAlignment="Top" Width="364" RadiusY="1" RadiusX="1"/>
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="3" Margin="702,280,0,0" VerticalAlignment="Top" Width="364" RadiusY="1" RadiusX="1"/>
         <Rectangle Fill="WhiteSmoke" HorizontalAlignment="Left" Height="3" Margin="818,79,0,0" VerticalAlignment="Top" Width="130" RadiusY="1" RadiusX="1"/>
-        <Frame Name="SecondFrame" Content="" Visibility="Hidden" HorizontalAlignment="Left" Height="520" VerticalAlignment="Top" Width="1080"/>
+        <Frame Name="SecondFrame" NavigationUIVisibility="Hidden" HorizontalAlignment="Left" Height="520" VerticalAlignment="Top" Width="1080"/>
     </Grid>
 </Page>
