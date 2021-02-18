@@ -7,10 +7,10 @@ namespace SalaoDeCabelereiro.View
     {
         private ProdutosDeProcedimentoViewModel _produtosDeProcedimentoViewModel { get; set; }
 
-        public ProdutosDeProcedimentoView()
+        public ProdutosDeProcedimentoView(ProcedimentoViewModel procedimentoViewModel)
         {
             InitializeComponent();
-            _produtosDeProcedimentoViewModel = new ProdutosDeProcedimentoViewModel();
+            _produtosDeProcedimentoViewModel = new ProdutosDeProcedimentoViewModel(procedimentoViewModel);
             DataContext = _produtosDeProcedimentoViewModel;
         }
 

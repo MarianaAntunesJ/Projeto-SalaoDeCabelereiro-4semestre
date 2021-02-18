@@ -1,6 +1,6 @@
 ﻿namespace SalaoDeCabelereiro.Model
 {
-    class ProdutoModel
+    public class ProdutoModel
     {
         public int Id { get; set; }
         public string Nome { get; set; }

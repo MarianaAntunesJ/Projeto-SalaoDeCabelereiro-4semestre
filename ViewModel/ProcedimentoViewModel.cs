@@ -5,7 +5,7 @@ using System.ComponentModel;
 
 namespace SalaoDeCabelereiro.ViewModel
 {
-    class ProcedimentoViewModel : INotifyPropertyChanged
+    public class ProcedimentoViewModel : INotifyPropertyChanged
     {
         private ProcedimentoModel _procedimento { get; set; }
         private ProcedimentoDAO _procedimentoDAO;

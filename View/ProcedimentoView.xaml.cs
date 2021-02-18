@@ -18,7 +18,7 @@ namespace SalaoDeCabelereiro.View
 
         private void BtnProdutos_Click(object sender, RoutedEventArgs e)
         {
-            FMProdutos.Navigate(new ProdutosDeProcedimentoView());
+            FMProdutos.Navigate(new ProdutosDeProcedimentoView(_procedimentoViewModel));
         }
 
         private void TxBPesquisa_TextChanged(object sender, TextChangedEventArgs e)

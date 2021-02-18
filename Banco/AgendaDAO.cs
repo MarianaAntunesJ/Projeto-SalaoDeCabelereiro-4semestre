@@ -40,10 +40,10 @@ namespace SalaoDeCabelereiro.Banco
                 return false;
         }
 
-        public void Inserir(AgendaModel agendamento)
+        public bool Inserir(AgendaModel agendamento)
         {
             Cmd.CommandText = $@"{ConsultaHelper.GetInsertInto(_tabela)} (@Cliente, @Profissional @Procedimento, @Horario, @Ativo)";
-            DadosAgendamento(agendamento);
+            return DadosAgendamento(agendamento);
         }
 
         private List<AgendaModel> GetProduto()
@@ -87,12 +87,12 @@ namespace SalaoDeCabelereiro.Banco
             return GetProduto();
         }
 
-        public void Atualizar(AgendaModel agendamento)
+        public bool Atualizar(AgendaModel agendamento)
         {
             GetConexao();
             Cmd.CommandText = $@"{ConsultaHelper.GetUpdateSet(_tabela)} Cliente = @Cliente, Profissional = @Profissional, Procedimento = @Procedimento, Horario = @Horario, Ativo = @Ativo  WHERE Id = @id";
 
-            DadosAgendamento(agendamento);
+            return DadosAgendamento(agendamento);
         }
     }
 }

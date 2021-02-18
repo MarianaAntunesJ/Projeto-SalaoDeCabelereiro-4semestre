@@ -1,5 +1,7 @@
 ﻿using SalaoDeCabelereiro.Banco;
 using SalaoDeCabelereiro.Model;
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 
@@ -27,9 +29,36 @@ namespace SalaoDeCabelereiro.ViewModel
 
         public AgendaViewModel()
         {
-            LimparUsuarioAtualTela();
+            LimparUsuarioAtual();
             _agendamentoDAO = new AgendaDAO();
             AtualizarLista();
+        }
+
+        public ObservableCollection<KeyValuePair<int, string>> CarregarFuncionarios()
+        {
+            var chavesValoresFuncionarios = new ObservableCollection<KeyValuePair<int, string>>();
+            FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+            var funcionarios = funcionarioDAO.Listar();
+            foreach (FuncionarioModel item in funcionarios)
+                chavesValoresFuncionarios.Add(new KeyValuePair<int, string>(item.Id, item.Nome));
+            return chavesValoresFuncionarios;
+                
+        }
+
+        public bool Salvar()
+        {
+            bool sucesso;
+            if (_agendamento.Id == 0)
+                sucesso = _agendamentoDAO.Inserir(_agendamento);
+            else
+                sucesso = _agendamentoDAO.Atualizar(_agendamento);
+            if (sucesso)
+            {
+                AtualizarLista();
+                LimparUsuarioAtual();
+                return true;
+            }
+            return false;
         }
 
         private void AtualizarLista()
@@ -37,7 +66,17 @@ namespace SalaoDeCabelereiro.ViewModel
             Agendamentos = new ObservableCollection<AgendaModel>(_agendamentoDAO.Listar());
         }
 
-        public void LimparUsuarioAtualTela()
+        public void Consultar(string busca)
+        {
+            Agendamentos = new ObservableCollection<AgendaModel>(_agendamentoDAO.Consultar(busca));
+        }
+
+        public void Selecionar(int index)
+        {
+            Agendamento = Agendamentos[index];
+        }
+
+        public void LimparUsuarioAtual()
         {
             Agendamento = new AgendaModel();
         }

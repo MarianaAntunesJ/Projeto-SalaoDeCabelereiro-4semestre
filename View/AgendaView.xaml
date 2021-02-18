@@ -12,31 +12,24 @@
         <Rectangle Fill="WhiteSmoke"  HorizontalAlignment="Left" Height="267" Margin="705,123,0,0" VerticalAlignment="Top" Width="365"/>
         <Rectangle Fill="WhiteSmoke"  HorizontalAlignment="Left" Height="445" Margin="9,24,0,0" VerticalAlignment="Top" Width="677"/>
         <DatePicker Name="DPData" HorizontalAlignment="Left" Margin="17,37,0,0" VerticalAlignment="Top" Width="152" Height="27"/>
-        <ComboBox Name="CBPesquisa" HorizontalAlignment="Left" Margin="182,40,0,0" VerticalAlignment="Top" Height="28" Width="142">
-            <ComboBoxItem Name="CBICliente" Content="Cliente"/>
-            <ComboBoxItem Name="CBIFuncionario" Content="Funcionário"/>
-        </ComboBox>
         <TextBox Name="TxBPesquisa" HorizontalAlignment="Left" Height="28" Margin="329,41,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="342" TextChanged="TextBox_TextChanged"/>
-        <DataGrid Name="DGAgenda" HorizontalAlignment="Left" Height="374" Margin="17,74,0,0" VerticalAlignment="Top" Width="654"/>
+        <DataGrid Name="DGAgenda" HorizontalAlignment="Left" Height="374" Margin="17,74,0,0" VerticalAlignment="Top" Width="654" SelectionChanged="DGAgenda_SelectionChanged"/>
         <Label Name="LbAgendamento" Content="Agendamento" HorizontalAlignment="Left" Margin="839,84,0,0" VerticalAlignment="Top" Foreground="#FF383434" FontWeight="Bold" FontStyle="Italic" Width="124" Height="36" FontSize="16"/>
         <Label Name="LbIdCliente" Content="Id:" HorizontalAlignment="Left" Margin="714,133,0,0" VerticalAlignment="Top" Foreground="#FF383434" FontWeight="Bold"  Height="32" Width="111"/>
-        <TextBox Name="TxBIdCliente" IsReadOnly="True" HorizontalAlignment="Left" Height="29" Margin="842,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="212"/>
+        <TextBox Name="TxBIdCliente" Text="{Binding Agendamento.Id}" IsReadOnly="True" HorizontalAlignment="Left" Height="29" Margin="842,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="212"/>
         <Label x:Name="LbNome" Content="Nome:" HorizontalAlignment="Left" Margin="714,167,0,0" VerticalAlignment="Top" FontWeight="Bold"  Height="31" Width="111"/>
-        <TextBox x:Name="TxBNome" HorizontalAlignment="Left" Height="28" Margin="842,163,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="212"/>
+        <TextBox x:Name="TxBNome" Text="{Binding Agendamento.Nome}" HorizontalAlignment="Left" Height="28" Margin="842,163,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="212"/>
         <Label x:Name="LbTelefone" Content="Telefone:" HorizontalAlignment="Left" Margin="714,198,0,0" VerticalAlignment="Top" FontWeight="Bold"  Height="32" Width="111"/>
-        <TextBox x:Name="TxBTelefone" HorizontalAlignment="Left" Height="28" Margin="842,194,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="212"/>
+        <TextBox x:Name="TxBTelefone" Text="{Binding Agendamento.Telefone}" HorizontalAlignment="Left" Height="28" Margin="842,194,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="212"/>
         <Label x:Name="LbIdProfissional" Content="Id (Profissional):" HorizontalAlignment="Left" Margin="714,232,0,0" VerticalAlignment="Top" FontWeight="Bold"  Height="31" Width="111"/>
         <TextBox x:Name="TxBIdProfissional" IsReadOnly="True" HorizontalAlignment="Left" Height="28" Margin="842,227,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="212"/>
         <Label x:Name="LbProfissional" Content="Profissional:" HorizontalAlignment="Left" Margin="714,263,0,0" VerticalAlignment="Top" FontWeight="Bold"  Height="31" Width="111"/>
-        <ComboBox x:Name="CBProfissional" HorizontalAlignment="Left" Margin="842,258,0,0" VerticalAlignment="Top" Width="212" Height="28">
-            <ComboBoxItem x:Name="CBIFeminino" Content="Feminino"/>
-            <ComboBoxItem x:Name="CBIMasculino" Content="Masculino"/>
-            <ComboBoxItem x:Name="CBIOutro" Content="Outro"/>
+        <ComboBox x:Name="CBProfissional" Text="{Binding Agendamento.Profissional}" HorizontalAlignment="Left" Margin="842,258,0,0" VerticalAlignment="Top" Width="212" Height="28">
         </ComboBox>
         <Label x:Name="LbProcedimento" Content="Procedimento:" HorizontalAlignment="Left" Margin="714,294,0,0" VerticalAlignment="Top" FontWeight="Bold"  Height="29" Width="111"/>
         <ComboBox Name="CBProcedimento" HorizontalAlignment="Left" Margin="842,289,0,0" VerticalAlignment="Top" Width="212" Height="27"/>
         <Label Name="LbHorario" Content="Horário:" HorizontalAlignment="Left" Margin="714,325,0,0" VerticalAlignment="Top" FontWeight="Bold"  Width="111" Height="29"/>
-        <TextBox Name="TxBHorario" HorizontalAlignment="Left" Height="26" Margin="842,321,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="212"/>
+        <TextBox Name="TxBHorario" Text="{Binding Agendamento.Horario}" HorizontalAlignment="Left" Height="26" Margin="842,321,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="212"/>
         <Label x:Name="LbStatus" Content="Status" HorizontalAlignment="Left" Margin="714,355,0,0" VerticalAlignment="Top" FontWeight="Bold"  Height="28" Width="112" RenderTransformOrigin="0.5,0.5">
             <Label.RenderTransform>
                 <TransformGroup>
@@ -47,10 +40,9 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <CheckBox x:Name="CBAtivo" Content="Ativo" HorizontalAlignment="Left" Margin="842,365,0,0" VerticalAlignment="Top" FontWeight="Bold"  Height="25" Width="116"/>
-        <Button x:Name="BtNovoCadastro" Content="Novo cadastro" HorizontalAlignment="Left" Margin="842,418,0,0" VerticalAlignment="Top" Width="103" Height="20" BorderBrush="#FF5F5B5F" Foreground="#FF3D3838"/>
-        <Button x:Name="BtSalvar" Content="Salvar" HorizontalAlignment="Left" Margin="629,483,0,0" VerticalAlignment="Top" Width="96" Height="22" />
-        <Button x:Name="BtSair00" Content="Sair" HorizontalAlignment="Left" VerticalAlignment="Top" Width="95" Margin="441,483,0,0" Height="22"/>
+        <CheckBox x:Name="CBAtivo" IsChecked="{Binding Agendamento.Ativo}" Content="Ativo" HorizontalAlignment="Left" Margin="842,365,0,0" VerticalAlignment="Top" FontWeight="Bold"  Height="25" Width="116"/>
+        <Button x:Name="BtNovoCadastro" Content="Novo cadastro" HorizontalAlignment="Left" Margin="842,418,0,0" VerticalAlignment="Top" Width="103" Height="20" BorderBrush="#FF5F5B5F" Foreground="#FF3D3838" Click="BtNovoCadastro_Click"/>
+        <Button x:Name="BtSalvar" Content="Salvar" HorizontalAlignment="Left" Margin="629,483,0,0" VerticalAlignment="Top" Width="96" Height="22" Click="BtSalvar_Click" />
         <Rectangle Fill="WhiteSmoke" HorizontalAlignment="Left" Height="3" Margin="835,112,0,0" VerticalAlignment="Top" Width="120" RadiusY="1" RadiusX="1"/>
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="3" Margin="705,160,0,0" VerticalAlignment="Top" Width="364" RadiusY="1" RadiusX="1"/>
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="3" Margin="705,191,0,0" VerticalAlignment="Top" Width="364" RadiusY="1" RadiusX="1"/>
@@ -59,6 +51,7 @@
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="3" Margin="705,286,0,0" VerticalAlignment="Top" Width="364" RadiusY="1" RadiusX="1"/>
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="3" Margin="705,317,0,0" VerticalAlignment="Top" Width="364" RadiusY="1" RadiusX="1"/>
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="3" Margin="706,347,0,0" VerticalAlignment="Top" Width="364" RadiusY="1" RadiusX="1"/>
+        <Label Content="Nome do cliente:" HorizontalAlignment="Left" Margin="199,43,0,0" VerticalAlignment="Top" Width="102"/>
 
     </Grid>
 </Page>

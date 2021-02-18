@@ -20,7 +20,7 @@
         <Label x:Name="LbNome" Content="Nome:" HorizontalAlignment="Left" Margin="711,176,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="29" Width="101"/>
         <TextBox x:Name="TxBNome" Text="{Binding Procedimento.Nome}" HorizontalAlignment="Left" Height="27" Margin="840,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211"/>
         <Label x:Name="LbTDuracao" Content="Duração:" HorizontalAlignment="Left" Margin="711,208,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="30" Width="101"/>
-        <TextBox x:Name="TxBDuracao" Text="{Binding Procedimento.Duracao}" HorizontalAlignment="Left" Height="25" Margin="840,208,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211"/>
+        <TextBox x:Name="TxBDuracao" HorizontalAlignment="Left" Height="25" Margin="840,208,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211"/>
         <Label x:Name="LbAreaProfissional" Content="Área Profissional:" HorizontalAlignment="Left" Margin="711,237,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="29" Width="113"/>
         <ComboBox x:Name="CBProfissão" Text="{Binding Procedimento.AreaProfissional}" HorizontalAlignment="Left" Margin="840,238,0,0" VerticalAlignment="Top" Width="211" Height="28">
             <ComboBoxItem x:Name="CBIGerente" Content="Gerente"/>

@@ -13,7 +13,7 @@
         <DataGrid Name="DGProdutos" ItemsSource="{Binding TodosProdutos}" IsReadOnly="True" HorizontalAlignment="Left" Height="293" Margin="33,69,0,0" VerticalAlignment="Top" Width="293" SelectionChanged="DGProdutos_SelectionChanged"/>
         <TextBox Name="TxBProduto" HorizontalAlignment="Left" Height="23" Margin="85,41,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="241"/>
         <Label Name="LBProduto" Content="Produto:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,38,0,0"/>
-        <DataGrid x:Name="DGProdutos_Copy" ItemsSource="{Binding Procedimento}" IsReadOnly="True" HorizontalAlignment="Left" Height="293" Margin="351,69,0,0" VerticalAlignment="Top" Width="293"/>
+        <DataGrid x:Name="DGProdutos_Copy" ItemsSource="{Binding ProdutosEscolhidos}" IsReadOnly="True" HorizontalAlignment="Left" Height="293" Margin="351,69,0,0" VerticalAlignment="Top" Width="293"/>
         <Button Content="Salvar" HorizontalAlignment="Left" Margin="640,362,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         <Frame Name="FMProcedimento" NavigationUIVisibility="Hidden" HorizontalAlignment="Left" Height="520" VerticalAlignment="Top" Width="1080"/>
     </Grid>

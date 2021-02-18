@@ -8,10 +8,9 @@ namespace SalaoDeCabelereiro.ViewModel
     class ProdutosDeProcedimentoViewModel : INotifyPropertyChanged
     {
         private ObservableCollection<ProdutoModel> _produtosEscolhidos { get; set; }
-        private ProdutosDeProcedimentoDAO _produtosDeProcedimentoDAO;
         private ObservableCollection<ProdutoModel> _todosProdutos { get; set; }
         private ProdutoDAO _produtoDAO;
-        private ProcedimentoViewModel _procedimentoViewModel;
+        private ProcedimentoViewModel _procedimentoViewModel { get; set; }
 
         public ObservableCollection<ProdutoModel> ProdutosEscolhidos
         {
@@ -25,9 +24,9 @@ namespace SalaoDeCabelereiro.ViewModel
             set { _todosProdutos = value; OnPropertyChanged("TodosProdutos"); }
         }
 
-        public ProdutosDeProcedimentoViewModel()
+        public ProdutosDeProcedimentoViewModel(ProcedimentoViewModel procedimentoViewModel)
         {
-            _produtosDeProcedimentoDAO = new ProdutosDeProcedimentoDAO();
+            _procedimentoViewModel = procedimentoViewModel;
             _produtoDAO = new ProdutoDAO();
             ProdutosEscolhidos = new ObservableCollection<ProdutoModel>();
             AtualizarListaTodosProdutos();

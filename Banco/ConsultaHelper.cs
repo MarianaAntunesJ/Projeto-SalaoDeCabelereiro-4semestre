@@ -14,7 +14,7 @@ namespace SalaoDeCabelereiro.Banco
         public static string _values = "VALUES";
         public static string _set = "SET";
 
-        public static string GetInsertInto(string tabela) => $"{_insertInto} {tabela} {_values}";
+        public static string GetInsertInto(string tabela) => $"{_insertInto} {tabela} OUTPUT INSERTED.Id {_values}";
         public static string GetSelectFrom(string tabela) => $"{_selectFrom} {tabela}";
         public static string GetUpdateSet(string tabela) => $"{_update} {tabela} {_set}";
     }

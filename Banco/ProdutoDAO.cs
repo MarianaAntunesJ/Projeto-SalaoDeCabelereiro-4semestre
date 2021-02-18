@@ -66,6 +66,31 @@ namespace SalaoDeCabelereiro.Banco
             return produtos;
         }
 
+        public List<ProdutoModel> GetProdutos(int id)
+        {
+            GetConexao();
+            Cmd.CommandText = $"{ConsultaHelper.GetSelectFrom(_tabela)} WHERE Id = @id";
+            Cmd.Parameters.AddWithValue("@Id", id);
+
+            SqlDataReader rd = Cmd.ExecuteReader();
+            List<ProdutoModel> produtos = new List<ProdutoModel>();
+
+            while (rd.Read())
+            {
+                ProdutoModel produto = new ProdutoModel(
+                        (int)rd[nameof(ProdutoModel.Id)],
+                        (string)rd[nameof(ProdutoModel.Nome)],
+                        (double)rd[nameof(ProdutoModel.Peso)],
+                        (string)rd[nameof(ProdutoModel.Medicao)],
+                        (int)rd[nameof(ProdutoModel.Quantidade)],
+                        (bool)rd[nameof(ProdutoModel.Ativo)]);
+
+                produtos.Add(produto);
+            }
+            rd.Close();
+            return produtos;
+        }
+
         public List<ProdutoModel> Listar()
         {
             GetConexao();

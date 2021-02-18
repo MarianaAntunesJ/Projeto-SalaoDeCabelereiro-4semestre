@@ -29,13 +29,11 @@ namespace SalaoDeCabelereiro.Banco
             GetConexao();
             Cmd.Parameters.Clear();
             Cmd.Parameters.AddWithValue("@Nome", procedimento.Nome);
-            Cmd.Parameters.AddWithValue("@Duracao", procedimento.Duracao);
             Cmd.Parameters.AddWithValue("@AreaProfissional", procedimento.AreaProfissional);
             Cmd.Parameters.AddWithValue("@Ativo", true);
 
             int modified = (int)Cmd.ExecuteScalar();
-
-            if (Cmd.ExecuteNonQuery() == 1)
+            if (modified != 0)
                 return InsereProdutosDeProcedimento(modified, procedimento);
             return false;
         }
@@ -45,7 +43,7 @@ namespace SalaoDeCabelereiro.Banco
             var sb = new StringBuilder();
 
             foreach (var produto in procedimento.Produtos)
-                sb.Append($"({idProcedimento}, {produto})\t");
+                sb.Append($"({produto.Id}, {idProcedimento})\t");
 
             return InserirProdutosDeProcedimento(sb.ToString());
         }
@@ -53,7 +51,7 @@ namespace SalaoDeCabelereiro.Banco
         private bool InserirProdutosDeProcedimento(string valores)
         {
             GetConexao();
-            Cmd.CommandText = $"INSERT INTO ProdutosDeProcedimento VALUES {valores}";
+            Cmd.CommandText = $"INSERT INTO Produtos_De_Procedimento VALUES {valores}";
             if (Cmd.ExecuteNonQuery() == 1)
                 return true;
             return false;
@@ -61,11 +59,11 @@ namespace SalaoDeCabelereiro.Banco
 
         public bool Inserir(ProcedimentoModel procedimento)
         {
-            Cmd.CommandText = $@"{ConsultaHelper.GetInsertInto(_tabela)} (@Nome, @Duracao, @Areaprofissional, @Ativo)";
+            Cmd.CommandText = $@"{ConsultaHelper.GetInsertInto(_tabela)} (@Nome, @Areaprofissional, @Ativo)";
             return DadosProcedimento(procedimento);
         }
 
-        private List<ProcedimentoModel> GetProduto()
+        private List<ProcedimentoModel> GetProcedimento()
         {
             SqlDataReader rd = Cmd.ExecuteReader();
             List<ProcedimentoModel> procedimentos = new List<ProcedimentoModel>();
@@ -75,9 +73,7 @@ namespace SalaoDeCabelereiro.Banco
                 ProcedimentoModel procedimento = new ProcedimentoModel(
                         (int)rd[nameof(ProcedimentoModel.Id)],
                         (string)rd[nameof(ProcedimentoModel.Nome)],
-                        (int)rd[nameof(ProcedimentoModel.Duracao)],
                         (string)rd[nameof(ProcedimentoModel.AreaProfissional)],
-                        (ObservableCollection<ProdutoModel>)rd[nameof(ProcedimentoModel.Produtos)],
                         (bool)rd[nameof(ProcedimentoModel.Ativo)]);
 
                 procedimentos.Add(procedimento);
@@ -91,7 +87,7 @@ namespace SalaoDeCabelereiro.Banco
             GetConexao();
             Cmd.CommandText = $"{ConsultaHelper.GetSelectFrom(_tabela)}";
 
-            return GetProduto();
+            return GetProcedimento();
         }
 
         public List<ProcedimentoModel> Consultar(string busca)
@@ -103,13 +99,13 @@ namespace SalaoDeCabelereiro.Banco
             Cmd.Parameters.Clear();
             Cmd.Parameters.AddWithValue("@busca", busca);
 
-            return GetProduto();
+            return GetProcedimento();
         }
 
         public bool Atualizar(ProcedimentoModel procedimento)
         {
             GetConexao();
-            Cmd.CommandText = $@"{ConsultaHelper.GetUpdateSet(_tabela)} Nome = @Nome, Duracao = @Duracao, AreaProfissional = @AreaProfissional, Produtos = @Produtos, Ativo = @Ativo  WHERE Id = @id";
+            Cmd.CommandText = $@"{ConsultaHelper.GetUpdateSet(_tabela)} Nome = @Nome, AreaProfissional = @AreaProfissional, Produtos = @Produtos, Ativo = @Ativo  WHERE Id = @id";
 
             return DadosProcedimento(procedimento);
         }
