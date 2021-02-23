@@ -32,7 +32,7 @@
             <ComboBoxItem x:Name="CBIMiligrama" Content="Miligrama"/>
         </ComboBox>
         <Label x:Name="LbStatus" Content="Status:" HorizontalAlignment="Left" Margin="708,248,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="30" Width="111" RenderTransformOrigin="0.5,0.5"/>
-        <CheckBox x:Name="CBAtivo" Content="Ativo" HorizontalAlignment="Left" Margin="835,254,0,0" VerticalAlignment="Top" Height="15" Width="117"/>
+        <CheckBox x:Name="CBAtivo" IsChecked="{Binding Produto.Ativo}" Content="Ativo" HorizontalAlignment="Left" Margin="835,254,0,0" VerticalAlignment="Top" Height="15" Width="117"/>
         <Button x:Name="BtNovoCadastro" Content="Novo cadastro" HorizontalAlignment="Left" Margin="820,432,0,0" VerticalAlignment="Top" Width="147" Height="22" Click="BtNovoCadastro_Click"/>
         <Button x:Name="BtSalvar" Content="Salvar" HorizontalAlignment="Left" Margin="850,471,0,0" VerticalAlignment="Top" Width="96" Height="22" Click="BtSalvar_Click" />
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="3" Margin="701,125,0,0" VerticalAlignment="Top" Width="364" RadiusY="1" RadiusX="1"/>

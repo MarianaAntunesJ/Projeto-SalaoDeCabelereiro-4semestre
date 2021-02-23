@@ -30,7 +30,7 @@ namespace SalaoDeCabelereiro.Banco
             Cmd.Parameters.AddWithValue("@CPF", funcionario.CPF);
             Cmd.Parameters.AddWithValue("@Profissao", funcionario.Profissao);
             Cmd.Parameters.AddWithValue("@Email", funcionario.Email);
-            Cmd.Parameters.AddWithValue("@Ativo", true);
+            Cmd.Parameters.AddWithValue("@Ativo", funcionario.Ativo);
             Cmd.Parameters.AddWithValue("@Usuario", funcionario.Usuario);
             Cmd.Parameters.AddWithValue("@Senha", funcionario.Senha);
 

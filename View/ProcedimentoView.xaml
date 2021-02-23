@@ -26,7 +26,7 @@
         </ComboBox>
         <Button Name="BtnProdutos" Content="Produtos utilizados" HorizontalAlignment="Left" Margin="829,290,0,0" VerticalAlignment="Top" Width="120" Click="BtnProdutos_Click" FontWeight="Bold" Height="21"/>
         <Label x:Name="LbStatus" Content="Status:" HorizontalAlignment="Left" Margin="713,240,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="30" Width="111" RenderTransformOrigin="0.5,0.5"/>
-        <CheckBox x:Name="CBAtivo" Content="Ativo" HorizontalAlignment="Left" Margin="840,248,0,0" VerticalAlignment="Top" Height="15" Width="117"/>
+        <CheckBox x:Name="CBAtivo" IsChecked="{Binding Procedimento.Ativo}" Content="Ativo" HorizontalAlignment="Left" Margin="840,248,0,0" VerticalAlignment="Top" Height="15" Width="117"/>
         <Button x:Name="BtNovoCadastro" Content="Novo cadastro" HorizontalAlignment="Left" Margin="810,366,0,0" VerticalAlignment="Top" Width="147" Height="22" Click="BtNovoCadastro_Click"/>
         <Button x:Name="BtSalvar" Content="Salvar" HorizontalAlignment="Left" Margin="840,411,0,0" VerticalAlignment="Top" Width="96" Height="22" Click="BtSalvar_Click" />
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="3" Margin="706,173,0,0" VerticalAlignment="Top" Width="364" RadiusY="1" RadiusX="1"/>

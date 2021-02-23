@@ -29,7 +29,7 @@ namespace SalaoDeCabelereiro.Banco
             Cmd.Parameters.AddWithValue("@Peso", produto.Peso);
             Cmd.Parameters.AddWithValue("@Medicao", produto.Medicao);
             Cmd.Parameters.AddWithValue("@Quantidade", produto.Quantidade);
-            Cmd.Parameters.AddWithValue("@Ativo", true);
+            Cmd.Parameters.AddWithValue("@Ativo", produto.Ativo);
             Cmd.Parameters.AddWithValue("@Imagem", produto.Imagem);
 
             if (Cmd.ExecuteNonQuery() == 1)

@@ -30,7 +30,7 @@
             <ComboBoxItem x:Name="CBIOutro" Content="Outro"/>
         </ComboBox>
         <Label x:Name="LbStatus" Content="Status" HorizontalAlignment="Left" Margin="707,285,0,0" VerticalAlignment="Top" Height="30" Width="111" FontWeight="Bold" RenderTransformOrigin="0.5,0.5"/>
-        <CheckBox x:Name="CBAtivo" Content="Ativo" HorizontalAlignment="Left" Margin="836,292,0,0" VerticalAlignment="Top" Height="15" Width="117" FontWeight="Bold"/>
+        <CheckBox x:Name="CBAtivo" IsChecked="{Binding Cliente.Ativo}" Content="Ativo" HorizontalAlignment="Left" Margin="836,292,0,0" VerticalAlignment="Top" Height="15" Width="117" FontWeight="Bold"/>
         <Button Name="BTNAnamnese" Content="Ficha de Anamnese" HorizontalAlignment="Left" Margin="815,339,0,0" VerticalAlignment="Top" Width="162" Height="19" Click="BtnAnamnese"/>
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="3" Margin="702,309,0,0" VerticalAlignment="Top" Width="364" RadiusY="1" RadiusX="1"/>
         <DatePicker Name="DPDataNascimento" SelectedDate="{Binding Cliente.DataNascimento, StringFormat=d}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="836,254,0,0" Width="211"/>

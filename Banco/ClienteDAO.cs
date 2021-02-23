@@ -24,14 +24,12 @@ namespace SalaoDeCabelereiro.Banco
 
         private bool DadosCliente(ClienteModel cliente)
         {
-            GetConexao();
-            Cmd.Parameters.Clear();
             Cmd.Parameters.AddWithValue("@Nome", cliente.Nome);
             Cmd.Parameters.AddWithValue("@Telefone", cliente.Telefone);
             Cmd.Parameters.AddWithValue("@CPF", cliente.CPF);
             Cmd.Parameters.AddWithValue("@Sexo", cliente.Sexo);
             Cmd.Parameters.AddWithValue("@DataNascimento", Convert.ToDateTime(cliente.DataNascimento).ToShortDateString());
-            Cmd.Parameters.AddWithValue("@Ativo", true);
+            Cmd.Parameters.AddWithValue("@Ativo", cliente.Ativo);
 
             if (Cmd.ExecuteNonQuery() == 1)
                 return true;
@@ -41,7 +39,9 @@ namespace SalaoDeCabelereiro.Banco
 
         public bool Inserir(ClienteModel cliente)
         {
+            GetConexao();
             Cmd.CommandText = $@"{ConsultaHelper.GetInsertInto(_tabela)} (@Nome, @Telefone, @CPF, @Sexo, @DataNascimento, @Ativo)";
+            Cmd.Parameters.Clear();
             return DadosCliente(cliente);
         }
 
@@ -91,7 +91,9 @@ namespace SalaoDeCabelereiro.Banco
         {
             GetConexao();
             Cmd.CommandText = $@"{ConsultaHelper.GetUpdateSet(_tabela)} Nome = @Nome, Telefone = @Telefone, CPF = @CPF, Sexo = @Sexo, DataNascimento = @DataNascimento, Ativo = @Ativo  WHERE Id = @id";
-
+            
+            Cmd.Parameters.Clear();
+            Cmd.Parameters.AddWithValue("@Id", cliente.Id);
             return DadosCliente(cliente);
         }
     }

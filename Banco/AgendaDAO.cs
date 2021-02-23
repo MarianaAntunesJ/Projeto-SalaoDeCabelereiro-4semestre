@@ -25,16 +25,14 @@ namespace SalaoDeCabelereiro.Banco
         }
 
         private bool DadosAgendamento(AgendaModel agendamento)
-        {
-            GetConexao();
-            Cmd.Parameters.Clear();
+        {            
             Cmd.Parameters.AddWithValue("@Cliente", agendamento.Cliente.Id);
             Cmd.Parameters.AddWithValue("@Funcionario", agendamento.Funcionario.Id);
             Cmd.Parameters.AddWithValue("@Procedimento", agendamento.Procedimento.Id);
             Cmd.Parameters.AddWithValue("@Data", Convert.ToDateTime(agendamento.Data).ToShortDateString());
             Cmd.Parameters.AddWithValue("@Horas", agendamento.Horas);
             Cmd.Parameters.AddWithValue("@Minutos", agendamento.Minutos);
-            Cmd.Parameters.AddWithValue("@Ativo", true);
+            Cmd.Parameters.AddWithValue("@Ativo", agendamento.Ativo);
 
             if (Cmd.ExecuteNonQuery() == 1)
                 return true;
@@ -44,7 +42,9 @@ namespace SalaoDeCabelereiro.Banco
 
         public bool Inserir(AgendaModel agendamento)
         {
+            GetConexao();
             Cmd.CommandText = $@"{ConsultaHelper.GetInsertInto(_tabela)} (@Cliente, @Funcionario, @Procedimento, @Data, @Horas, @Minutos, @Ativo)";
+            Cmd.Parameters.Clear();
             return DadosAgendamento(agendamento);
         }
 
@@ -96,6 +96,8 @@ namespace SalaoDeCabelereiro.Banco
             GetConexao();
             Cmd.CommandText = $@"{ConsultaHelper.GetUpdateSet(_tabela)} Cliente = @Cliente, Funcionario = @Funcionario, Procedimento = @Procedimento, Data = @Data, Horas = @Horas, Minutos = @Minutos, Ativo = @Ativo  WHERE Id = @id";
 
+            Cmd.Parameters.Clear();
+            Cmd.Parameters.AddWithValue("@Id", agendamento.Id);
             return DadosAgendamento(agendamento);
         }
     }
