@@ -82,5 +82,11 @@ namespace SalaoDeCabelereiro.View
             ControlaGridCursor(e);
             FrameMain.Navigate(new ProdutoView());
         }
+
+        private void BtnRelatorios_Click(object sender, RoutedEventArgs e)
+        {
+            ControlaGridCursor(e);
+            FrameMain.Navigate(new Relatorios());
+        }
     }
 }

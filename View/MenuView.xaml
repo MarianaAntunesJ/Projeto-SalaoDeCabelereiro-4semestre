@@ -20,6 +20,7 @@
                     <Button Name="BtnProcedimentos" Uid="3" Width="150" Content="PROCEDIMENTOS" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF383434" FontWeight="Bold" Click="BtnProcedimentos_Click"/>
                     <Button Name="BtnProdutos" Uid="4" Width="150" Content="PRODUTOS" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF383434" FontWeight="Bold" Click="BtnProdutos_Click"/>
                     <Button Name="BtnFuncionarios" Uid="5" Width="150" Content="FUNCIONÁRIOS" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF383434" FontWeight="Bold" Click="BtnFuncionarios_Click"/>
+                    <Button Name="BtnRelatorios" Uid="6" Width="150" Content="RELATÓRIOS" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF383434" FontWeight="Bold" Click="BtnRelatorios_Click"/>
                 </StackPanel>
                 <Grid x:Name="GridCursor" Width="150" Height="5" Background="#FFDFCAFD" HorizontalAlignment="Left" Margin="10,30,0,0"/>
             </Grid>

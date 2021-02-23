@@ -11,14 +11,9 @@
     <Grid Background="#FFDFCAFD">
         <Rectangle Fill="WhiteSmoke"  HorizontalAlignment="Left" Height="248" Margin="705,123,0,0" VerticalAlignment="Top" Width="365"/>
         <Rectangle Fill="WhiteSmoke"  HorizontalAlignment="Left" Height="445" Margin="9,24,0,0" VerticalAlignment="Top" Width="677"/>
-        <DatePicker Name="DPData" HorizontalAlignment="Left" Margin="17,37,0,0" VerticalAlignment="Top" Width="152" Height="27"/>
-        <Label Name="LbNomeCliente" Content="Nome do cliente:" HorizontalAlignment="Left" Margin="199,43,0,0" VerticalAlignment="Top" Width="102"/>
-        <TextBox Name="TxBPesquisa" HorizontalAlignment="Left" Height="28" Margin="329,41,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="342" TextChanged="TextBox_TextChanged"/>
-        <DataGrid Name="DGAgenda" IsReadOnly="True" ItemsSource="{Binding Agendamentos}" HorizontalAlignment="Left" Height="374" Margin="17,74,0,0" VerticalAlignment="Top" Width="654" SelectionChanged="DGAgenda_SelectionChanged" AutoGenerateColumns="true">
-            <DataGrid.Columns>
-
-            </DataGrid.Columns>
-        </DataGrid>
+        <Label Name="LbNomeCliente" Content="Id do cliente:" HorizontalAlignment="Left" Margin="17,43,0,0" VerticalAlignment="Top" Width="102"/>
+        <TextBox Name="TxBPesquisa" HorizontalAlignment="Left" Height="28" Margin="124,41,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="547" TextChanged="TextBox_TextChanged"/>
+        <DataGrid Name="DGAgenda" IsReadOnly="True" ItemsSource="{Binding Agendamentos}" HorizontalAlignment="Left" Height="374" Margin="17,74,0,0" VerticalAlignment="Top" Width="654" SelectionChanged="DGAgenda_SelectionChanged" AutoGenerateColumns="true" AutoGeneratingColumn="DGAgenda_AutoGeneratingColumn" />
         <Label Name="LbAgendamento" Content="Agendamento" HorizontalAlignment="Left" Margin="839,84,0,0" VerticalAlignment="Top" Foreground="#FF383434" FontWeight="Bold" FontStyle="Italic" Width="124" Height="36" FontSize="16"/>
         <Label Name="LbIdCliente" Content="Id:" HorizontalAlignment="Left" Margin="714,133,0,0" VerticalAlignment="Top" Foreground="#FF383434" FontWeight="Bold"  Height="32" Width="111"/>
         <TextBox Name="TxBIdCliente" Text="{Binding Agendamento.Id}" IsReadOnly="True" HorizontalAlignment="Left" Height="29" Margin="842,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="212"/>

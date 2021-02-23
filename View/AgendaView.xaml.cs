@@ -1,4 +1,5 @@
 ﻿using SalaoDeCabelereiro.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -90,6 +91,14 @@ namespace SalaoDeCabelereiro.View
                     contador++;
                 }
             }
+        }
+
+        private void DGAgenda_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.PropertyType == typeof(DateTime))
+                (e.Column as DataGridTextColumn).Binding.StringFormat = "dd/MM/yyyy";
+            if (e.PropertyName == "Funcionario" || e.PropertyName == "Procedimento")
+                e.Column = null;
         }
     }
 }
