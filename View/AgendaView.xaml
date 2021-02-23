@@ -11,10 +11,19 @@
     <Grid Background="#FFDFCAFD">
         <Rectangle Fill="WhiteSmoke"  HorizontalAlignment="Left" Height="248" Margin="705,123,0,0" VerticalAlignment="Top" Width="365"/>
         <Rectangle Fill="WhiteSmoke"  HorizontalAlignment="Left" Height="445" Margin="9,24,0,0" VerticalAlignment="Top" Width="677"/>
+        <Image Name="ImgLogin" Source="..\Imagens\Agenda.png" HorizontalAlignment="Left" Height="62" Margin="924,35,0,0" VerticalAlignment="Top" Width="88" RenderTransformOrigin="0.392,0.79"/>
         <Label Name="LbNomeCliente" Content="Id do cliente:" HorizontalAlignment="Left" Margin="17,43,0,0" VerticalAlignment="Top" Width="102"/>
         <TextBox Name="TxBPesquisa" HorizontalAlignment="Left" Height="28" Margin="124,41,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="547" TextChanged="TextBox_TextChanged"/>
-        <DataGrid Name="DGAgenda" IsReadOnly="True" ItemsSource="{Binding Agendamentos}" HorizontalAlignment="Left" Height="374" Margin="17,74,0,0" VerticalAlignment="Top" Width="654" SelectionChanged="DGAgenda_SelectionChanged" AutoGenerateColumns="true" AutoGeneratingColumn="DGAgenda_AutoGeneratingColumn" />
-        <Label Name="LbAgendamento" Content="Agendamento" HorizontalAlignment="Left" Margin="839,84,0,0" VerticalAlignment="Top" Foreground="#FF383434" FontWeight="Bold" FontStyle="Italic" Width="124" Height="36" FontSize="16"/>
+        <DataGrid Name="DGAgenda" IsReadOnly="True" ItemsSource="{Binding Agendamentos}" HorizontalAlignment="Left" Height="374" Margin="17,74,0,0" VerticalAlignment="Top" Width="654" SelectionChanged="DGAgenda_SelectionChanged" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Id Cliente" Binding="{Binding Cliente.Id}"/>
+                <DataGridTextColumn Header="Data" Binding="{Binding Data, StringFormat=dd/MM/yyyy}"/>
+                <DataGridTextColumn Header="Horas" Binding="{Binding Horas}"/>
+                <DataGridTextColumn Header="Minutos" Binding="{Binding Minutos}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Name="LbAgendamento" Content="Agendamento" HorizontalAlignment="Left" Margin="800,52,0,0" VerticalAlignment="Top" Foreground="#FF383434" FontWeight="Bold" FontStyle="Italic" Width="124" Height="36" FontSize="16"/>
         <Label Name="LbIdCliente" Content="Id:" HorizontalAlignment="Left" Margin="714,133,0,0" VerticalAlignment="Top" Foreground="#FF383434" FontWeight="Bold"  Height="32" Width="111"/>
         <TextBox Name="TxBIdCliente" Text="{Binding Agendamento.Id}" IsReadOnly="True" HorizontalAlignment="Left" Height="29" Margin="842,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="212"/>
         <Label x:Name="LbNomeDoCliente" Content="Nome do Cliente:" HorizontalAlignment="Left" Margin="714,167,0,0" VerticalAlignment="Top" FontWeight="Bold"  Height="31" Width="111"/>
@@ -63,9 +72,8 @@
         <Label x:Name="LbHorario" Content="Horário:" HorizontalAlignment="Left" Margin="713,293,0,0" VerticalAlignment="Top" FontWeight="Bold"  Width="111" Height="29"/>
         <Label x:Name="LbStatus" Content="Status" HorizontalAlignment="Left" Margin="714,340,0,0" VerticalAlignment="Top" FontWeight="Bold"  Height="28" Width="112" RenderTransformOrigin="0.5,0.5"/>
         <CheckBox x:Name="CBAtivo" IsChecked="{Binding Agendamento.Ativo}" Content="Ativo" HorizontalAlignment="Left" Margin="842,346,0,0" VerticalAlignment="Top" FontWeight="Bold"  Height="25" Width="116"/>
-        <Button x:Name="BtNovoCadastro" Content="Novo cadastro" HorizontalAlignment="Left" Margin="839,387,0,0" VerticalAlignment="Top" Width="103" Height="20" BorderBrush="#FF5F5B5F" Foreground="#FF3D3838" Click="BtNovoCadastro_Click"/>
-        <Button x:Name="BtSalvar" Content="Salvar" HorizontalAlignment="Left" Margin="629,483,0,0" VerticalAlignment="Top" Width="96" Height="22" Click="BtSalvar_Click" />
-        <Rectangle Fill="WhiteSmoke" HorizontalAlignment="Left" Height="3" Margin="835,112,0,0" VerticalAlignment="Top" Width="120" RadiusY="1" RadiusX="1"/>
+        <Button x:Name="BtNovoCadastro" Content="Novo cadastro" HorizontalAlignment="Left" Margin="842,408,0,0" VerticalAlignment="Top" Width="103" Height="20" BorderBrush="#FF5F5B5F" Foreground="#FF3D3838" Click="BtNovoCadastro_Click"/>
+        <Button x:Name="BtSalvar" Content="Salvar" HorizontalAlignment="Left" Margin="847,453,0,0" VerticalAlignment="Top" Width="96" Height="22" Click="BtSalvar_Click" />
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="3" Margin="705,160,0,0" VerticalAlignment="Top" Width="364" RadiusY="1" RadiusX="1"/>
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="3" Margin="705,191,0,0" VerticalAlignment="Top" Width="364" RadiusY="1" RadiusX="1"/>
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="3" Margin="705,224,0,0" VerticalAlignment="Top" Width="364" RadiusY="1" RadiusX="1"/>

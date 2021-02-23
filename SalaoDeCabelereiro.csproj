@@ -283,6 +283,11 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Imagens\Relatorio.png" />
+    <Resource Include="Imagens\Agenda.png" />
+    <Resource Include="Imagens\Cliente.png" />
+    <Resource Include="Imagens\funcionario.png" />
+    <Resource Include="Imagens\procedimentopng.png" />
+    <Resource Include="Imagens\Produtos.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
