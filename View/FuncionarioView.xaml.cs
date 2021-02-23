@@ -46,9 +46,9 @@ namespace SalaoDeCabelereiro.View
             if (PbSenha.Password == PbConfirmarSenha.Password)
             {
                 if (_funcionarioViewModel.Salvar(_funcionarioViewModel.GerarHashMd5(PbSenha.Password)))
-                    MessageBox.Show("Cliente salvo!", "Salvo");
+                    MessageBox.Show("Funcionario salvo!", "Salvo");
                 else
-                    MessageBox.Show("Cliente não foi salvo.", "Erro");
+                    MessageBox.Show("Funcionario não foi salvo.", "Erro");
             }
             else
                 MessageBox.Show("Senhas não coincidem", "Erro");
