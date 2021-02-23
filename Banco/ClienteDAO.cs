@@ -17,7 +17,7 @@ namespace SalaoDeCabelereiro.Banco
             Cmd = new SqlCommand();
         }
 
-        private void GetConexao() //ToDo: nome ideal para esta função
+        private void GetConexao()
         {
             Cmd.Connection = Conexao.RetornarConexao();
         }

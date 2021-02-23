@@ -19,7 +19,7 @@ namespace SalaoDeCabelereiro.Banco
             Cmd = new SqlCommand();
         }
 
-        private void GetConexao() //ToDo: nome ideal para esta função
+        private void GetConexao()
         {
             Cmd.Connection = Conexao.RetornarConexao();
         }
@@ -28,10 +28,12 @@ namespace SalaoDeCabelereiro.Banco
         {
             GetConexao();
             Cmd.Parameters.Clear();
-            Cmd.Parameters.AddWithValue("@Nome", agendamento.Cliente);
-            Cmd.Parameters.AddWithValue("@Peso", agendamento.Funcionario);
-            Cmd.Parameters.AddWithValue("@Medicao", agendamento.Procedimento);
-            Cmd.Parameters.AddWithValue("@Quantidade", agendamento.Horario);
+            Cmd.Parameters.AddWithValue("@Cliente", agendamento.Cliente.Id);
+            Cmd.Parameters.AddWithValue("@Funcionario", agendamento.Funcionario.Id);
+            Cmd.Parameters.AddWithValue("@Procedimento", agendamento.Procedimento.Id);
+            Cmd.Parameters.AddWithValue("@Data", Convert.ToDateTime(agendamento.Data).ToShortDateString());
+            Cmd.Parameters.AddWithValue("@Horas", agendamento.Horas);
+            Cmd.Parameters.AddWithValue("@Minutos", agendamento.Minutos);
             Cmd.Parameters.AddWithValue("@Ativo", true);
 
             if (Cmd.ExecuteNonQuery() == 1)
@@ -42,7 +44,7 @@ namespace SalaoDeCabelereiro.Banco
 
         public bool Inserir(AgendaModel agendamento)
         {
-            Cmd.CommandText = $@"{ConsultaHelper.GetInsertInto(_tabela)} (@Cliente, @Profissional @Procedimento, @Horario, @Ativo)";
+            Cmd.CommandText = $@"{ConsultaHelper.GetInsertInto(_tabela)} (@Cliente, @Funcionario, @Procedimento, @Data, @Horas, @Minutos, @Ativo)";
             return DadosAgendamento(agendamento);
         }
 
@@ -55,10 +57,12 @@ namespace SalaoDeCabelereiro.Banco
             {
                 AgendaModel agendamento = new AgendaModel(
                         (int)rd[nameof(AgendaModel.Id)],
-                        (ClienteModel)rd[nameof(AgendaModel.Cliente)],
-                        (FuncionarioModel)rd[nameof(AgendaModel.Funcionario)],
-                        (ProcedimentoModel)rd[nameof(AgendaModel.Procedimento)],
-                        (DateTime)rd[nameof(AgendaModel.Horario)],
+                        new ClienteModel() { Id = (int)rd[nameof(AgendaModel.Cliente)] },
+                        new FuncionarioModel() { Id = (int)rd[nameof(AgendaModel.Funcionario)] },
+                        new ProcedimentoModel() { Id = (int)rd[nameof(AgendaModel.Procedimento)] },
+                        (DateTime)rd[nameof(AgendaModel.Data)],
+                        (string)rd[nameof(AgendaModel.Horas)],
+                        (string)rd[nameof(AgendaModel.Minutos)],
                         (bool)rd[nameof(AgendaModel.Ativo)]);
 
                 agendamentos.Add(agendamento);
@@ -79,7 +83,7 @@ namespace SalaoDeCabelereiro.Banco
         {
             GetConexao();
             busca = $"%{busca}%";
-            Cmd.CommandText = $"{ConsultaHelper.GetSelectFrom(_tabela)} WHERE Id LIKE @busca OR Nome LIKE @busca";
+            Cmd.CommandText = $"{ConsultaHelper.GetSelectFrom(_tabela)} WHERE Id LIKE @busca OR Cliente LIKE @busca";
 
             Cmd.Parameters.Clear();
             Cmd.Parameters.AddWithValue("@busca", busca);
@@ -90,7 +94,7 @@ namespace SalaoDeCabelereiro.Banco
         public bool Atualizar(AgendaModel agendamento)
         {
             GetConexao();
-            Cmd.CommandText = $@"{ConsultaHelper.GetUpdateSet(_tabela)} Cliente = @Cliente, Profissional = @Profissional, Procedimento = @Procedimento, Horario = @Horario, Ativo = @Ativo  WHERE Id = @id";
+            Cmd.CommandText = $@"{ConsultaHelper.GetUpdateSet(_tabela)} Cliente = @Cliente, Funcionario = @Funcionario, Procedimento = @Procedimento, Data = @Data, Horas = @Horas, Minutos = @Minutos, Ativo = @Ativo  WHERE Id = @id";
 
             return DadosAgendamento(agendamento);
         }

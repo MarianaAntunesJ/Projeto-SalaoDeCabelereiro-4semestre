@@ -73,6 +73,7 @@
     <Compile Include="ViewModel\AnamneseViewModel.cs" />
     <Compile Include="ViewModel\ClienteViewModel.cs" />
     <Compile Include="ViewModel\FuncionarioViewModel.cs" />
+    <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\ProcedimentoViewModel.cs" />
     <Compile Include="ViewModel\ProdutosDeProcedimentoViewModel.cs" />
     <Compile Include="ViewModel\ProdutoViewModel.cs" />
@@ -87,6 +88,9 @@
     </Compile>
     <Compile Include="View\FuncionarioView.xaml.cs">
       <DependentUpon>FuncionarioView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PrincipalView.xaml.cs">
+      <DependentUpon>PrincipalView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ProdutosDeProcedimentoView.xaml.cs">
       <DependentUpon>ProdutosDeProcedimentoView.xaml</DependentUpon>
@@ -107,6 +111,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="View\SplashScreen.xaml.cs">
+      <DependentUpon>SplashScreen.xaml</DependentUpon>
+    </Compile>
     <Page Include="View\AgendaView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -120,6 +127,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\FuncionarioView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PrincipalView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -140,6 +151,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ProdutoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SplashScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -170,7 +185,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Imagens\ImgAqui.PNG" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Imagens\logoSalao.png" />
   </ItemGroup>
@@ -179,6 +196,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Imagens\tabelatiposdecabelo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagens\Load.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagens\menu.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

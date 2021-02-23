@@ -1,6 +1,8 @@
 ﻿using SalaoDeCabelereiro.Model;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace SalaoDeCabelereiro.Banco
 {
@@ -16,7 +18,7 @@ namespace SalaoDeCabelereiro.Banco
             Cmd = new SqlCommand();
         }
 
-        private void GetConexao() //ToDo: nome ideal para esta função
+        private void GetConexao()
         {
             Cmd.Connection = Conexao.RetornarConexao();
         }
@@ -97,6 +99,52 @@ namespace SalaoDeCabelereiro.Banco
             Cmd.Parameters.Clear();
             Cmd.Parameters.AddWithValue("@Id", funcionario.Id);
             return DadosFuncionario(funcionario);
+        }
+
+
+
+        public string VerificarLogin(string usuario, string senha)
+        {
+            Cmd.Connection = Conexao.RetornarConexao();
+            Cmd.CommandText = "SELECT * FROM Funcionario WHERE Usuario = @Usuario1 AND Senha = @Senha ";
+
+            Cmd.Parameters.Clear();
+            Cmd.Parameters.AddWithValue("@Usuario1", usuario);
+            Cmd.Parameters.AddWithValue("@Senha", senha);
+
+            SqlDataReader rd = Cmd.ExecuteReader();
+
+            while (rd.Read())
+            {
+                if (rd != null)
+                {
+                    string profissao = (string)rd[nameof(FuncionarioModel.Profissao)];
+                    rd.Close();
+                    return profissao;
+                }
+            }
+            rd.Close();
+            return null;
+        }
+
+        static public string GerarHashMd5(string entrada)
+        {
+            using (MD5 md5Hash = MD5.Create())
+            {
+                // Converter a String para array de bytes, que é como a biblioteca trabalha.
+                byte[] data = md5Hash.ComputeHash(Encoding.Default.GetBytes(entrada));
+
+                // Cria-se um StringBuilder para recompôr a string.
+                StringBuilder sBuilder = new StringBuilder();
+
+                // Loop para formatar cada byte como uma String em hexadecimal
+                for (int i = 0; i < data.Length; i++)
+                {
+                    sBuilder.Append(data[i].ToString("x2"));
+                }
+
+                return sBuilder.ToString();
+            }
         }
     }
 }

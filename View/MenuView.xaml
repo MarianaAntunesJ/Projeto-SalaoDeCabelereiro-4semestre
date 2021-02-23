@@ -7,24 +7,23 @@
       mc:Ignorable="d" 
       Title="MenuView" Height="600" Width="1080" WindowStartupLocation="CenterScreen">
     <Viewbox>
-        <StackPanel Background="WhiteSmoke">
-            <Grid Height="50">
+        <StackPanel Background="#FFDFCAFD">
+            <Grid Height="50" Background="WhiteSmoke">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="227*"/>
                     <ColumnDefinition Width="358*"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10,0,9.6,0" Grid.ColumnSpan="2">
-                    <Button Uid="0" Width="150" Content="HOME" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF383434" FontWeight="Bold" Click="BtnMenu"/>
-                    <Button Uid="1" Width="150" Content="AGENDA" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF383434" FontWeight="Bold" Click="BtnAgenda"/>
-                    <Button Uid="2" Width="150" Content="CLIENTES" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF383434" FontWeight="Bold" Click="BtnClientes"/>
-                    <Button Uid="3" Width="150" Content="PAGAMENTO" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF383434" FontWeight="Bold" Click="BtnAgenda"/>
-                    <Button Uid="4" Width="150" Content="PROCEDIMENTOS" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF383434" FontWeight="Bold" Click="BtnProcedimentos"/>
-                    <Button Uid="5" Width="150" Content="PRODUTOS" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF383434" FontWeight="Bold" Click="BtnProdutos"/>
-                    <Button Uid="6" Width="150" Content="FUNCIONÁRIOS" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF383434" FontWeight="Bold" Click="BtnFuncionarios"/>
+                    <Button Name="BtnMenu" Uid="0" Width="150" Content="HOME" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF383434" FontWeight="Bold" Click="BtnMenu_Click"/>
+                    <Button Name="BtnAgenda" Uid="1" Width="150" Content="AGENDA" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF383434" FontWeight="Bold" Click="BtnAgenda_Click"/>
+                    <Button Name="BtnClientes" Uid="2" Width="150" Content="CLIENTES" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF383434" FontWeight="Bold" Click="BtnClientes_Click"/>
+                    <Button Name="BtnProcedimentos" Uid="3" Width="150" Content="PROCEDIMENTOS" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF383434" FontWeight="Bold" Click="BtnProcedimentos_Click"/>
+                    <Button Name="BtnProdutos" Uid="4" Width="150" Content="PRODUTOS" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF383434" FontWeight="Bold" Click="BtnProdutos_Click"/>
+                    <Button Name="BtnFuncionarios" Uid="5" Width="150" Content="FUNCIONÁRIOS" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF383434" FontWeight="Bold" Click="BtnFuncionarios_Click"/>
                 </StackPanel>
                 <Grid x:Name="GridCursor" Width="150" Height="5" Background="#FFDFCAFD" HorizontalAlignment="Left" Margin="10,30,0,0"/>
             </Grid>
-            <Frame x:Name="FrameMain" Height="525" Background="#FFDFCAFD" NavigationUIVisibility="Hidden" Width="1080"/>
+            <Frame x:Name="FrameMain" Height="525" NavigationUIVisibility="Hidden" Width="1080"/>
         </StackPanel>
     </Viewbox>
 </Window>

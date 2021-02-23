@@ -1,0 +1,18 @@
+﻿<Window x:Class="SalaoDeCabelereiro.View.SplashScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SalaoDeCabelereiro.View"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen" Background="#FFDFCAFD"
+        Title="SplashScreen" Height="520" Width="1080">
+    <StackPanel VerticalAlignment="Center">
+        <Grid Height="294" Margin="0,0,-0.4,0">
+            <Image Source="..\Imagens\Load.png" Height="250" Width="200" VerticalAlignment="Top"/>
+            <TextBlock FontSize="30" Foreground="Black" VerticalAlignment="Bottom" TextAlignment="Center" FontWeight="Bold" Text="Bem vindo!"/>
+            <TextBlock FontSize="15" Foreground="Gray"  VerticalAlignment="Bottom" TextAlignment="Center" FontWeight="Bold" Text="Você está sendo redirecionado para a página de login." Margin="0,0,-0.4,-20.4"/>
+            <ProgressBar Name="progress" HorizontalAlignment="Left" Foreground="Black" Minimum="0" Maximum="200" IsIndeterminate="False" Height="25" Margin="360,216,0,0" VerticalAlignment="Top" Width="350"/>
+        </Grid>
+    </StackPanel>
+
+</Window>

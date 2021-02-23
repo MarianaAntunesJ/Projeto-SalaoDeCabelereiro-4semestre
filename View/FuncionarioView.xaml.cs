@@ -9,6 +9,7 @@ namespace SalaoDeCabelereiro.View
     public partial class FuncionarioView : Page
     {
         private FuncionarioViewModel _funcionarioViewModel { get; set; }
+        private FuncionarioView _funcionarioView;
 
         public FuncionarioView()
         {
@@ -28,16 +29,16 @@ namespace SalaoDeCabelereiro.View
             {
                 _funcionarioViewModel.Selecionar(DGFuncionarios.Items.IndexOf(DGFuncionarios.CurrentItem));
             }
+
+
             if (_funcionarioViewModel.Funcionario.Profissao.Equals("Gerente"))
                 CBProfissão.SelectedIndex = 0;
             else if (_funcionarioViewModel.Funcionario.Profissao.Equals("Recepcionista"))
                 CBProfissão.SelectedIndex = 1;
             else if (_funcionarioViewModel.Funcionario.Profissao.Equals("Estoquista"))
                 CBProfissão.SelectedIndex = 2;
-            else if (_funcionarioViewModel.Funcionario.Profissao.Equals("Cabelereiro"))
+            else if (_funcionarioViewModel.Funcionario.Profissao.Equals("Profissional da Beleza"))
                 CBProfissão.SelectedIndex = 3;
-            else if (_funcionarioViewModel.Funcionario.Profissao.Equals("Manicure"))
-                CBProfissão.SelectedIndex = 4;
         }
 
         private void BtSalvar_Click(object sender, RoutedEventArgs e)
@@ -70,6 +71,12 @@ namespace SalaoDeCabelereiro.View
         {
             PbSenha.Password = null;
             PbConfirmarSenha.Password = null;            
+        }
+
+        private void DGFuncionarios_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.PropertyName == "Senha" || e.PropertyName == "Usuario")
+                e.Column = null;
         }
     }
 }

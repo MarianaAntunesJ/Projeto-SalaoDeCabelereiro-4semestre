@@ -42,6 +42,17 @@ namespace SalaoDeCabelereiro.ViewModel
             ProdutosEscolhidos.Add(TodosProdutos[index]);
         }
 
+        public void Remover(int index)
+        {
+            if(index >= 0)
+                ProdutosEscolhidos.Remove(TodosProdutos[index]);
+        }
+
+        public void Consultar(string busca)
+        {
+            TodosProdutos = new ObservableCollection<ProdutoModel>(_produtoDAO.Consultar(busca));
+        }
+
         private void AtualizarListaTodosProdutos()
         {
             TodosProdutos = new ObservableCollection<ProdutoModel>(_produtoDAO.Listar());

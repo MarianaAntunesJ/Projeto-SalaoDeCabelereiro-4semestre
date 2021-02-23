@@ -21,6 +21,8 @@ namespace SalaoDeCabelereiro.View
         {
             if (e.PropertyType == typeof(DateTime))
                 (e.Column as DataGridTextColumn).Binding.StringFormat = "dd/MM/yyyy";
+            if (e.PropertyName == "FichaAnamnese")
+                e.Column = null;
         }
 
         private void BtnAnamnese(object sender, RoutedEventArgs e)
@@ -45,11 +47,6 @@ namespace SalaoDeCabelereiro.View
                 MessageBox.Show("Cliente salvo!", "Salvo");
             else
                 MessageBox.Show("Cliente não foi salvo.", "Erro");
-        }
-
-        private void BtSair00_Click(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void DGClientes_SelectionChanged(object sender, SelectionChangedEventArgs e)

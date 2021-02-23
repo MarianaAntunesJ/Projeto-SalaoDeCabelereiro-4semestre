@@ -28,10 +28,10 @@ namespace SalaoDeCabelereiro.ViewModel
 
         public ClienteViewModel()
         {
-            LimparUsuarioAtual();
             _clienteDAO = new ClienteDAO();
-            AtualizarLista();
             _cliente = new ClienteModel();
+            LimparUsuarioAtual();
+            AtualizarLista();
         }
 
         public bool Salvar()

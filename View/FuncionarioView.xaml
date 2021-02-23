@@ -13,7 +13,7 @@
         <Rectangle Fill="WhiteSmoke"  HorizontalAlignment="Left" Height="445" Margin="9,24,0,0" VerticalAlignment="Top" Width="677"/>
         <Label Name="LbProfissional" Content="Profissional:" HorizontalAlignment="Left" Margin="17,35,0,0" VerticalAlignment="Top" Height="30" Width="86" FontWeight="Bold"/>
         <TextBox Name="TxBPesquisa" HorizontalAlignment="Left" Height="28" Margin="108,37,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="563" TextChanged="TxBPesquisa_TextChanged"/>
-        <DataGrid Name="DGFuncionarios" IsReadOnly="True" HorizontalAlignment="Left" Height="374" Margin="17,74,0,0" VerticalAlignment="Top" Width="654" ItemsSource="{Binding Funcionarios}" SelectionChanged="DGFuncionarios_SelectionChanged"/>
+        <DataGrid Name="DGFuncionarios" IsReadOnly="True" HorizontalAlignment="Left" Height="374" Margin="17,74,0,0" VerticalAlignment="Top" Width="654" ItemsSource="{Binding Funcionarios}" SelectionChanged="DGFuncionarios_SelectionChanged" AutoGenerateColumns="True" AutoGeneratingColumn="DGFuncionarios_AutoGeneratingColumn"/>
         <Label Name="LbDadosDoProfissional" Content="Dados do Profissional" HorizontalAlignment="Left" Margin="813,12,0,0" VerticalAlignment="Top" FontWeight="Bold"  FontStyle="Italic" Height="26" Width="145"/>
         <Label Name="LbIdFuncionario" Content="Id:" HorizontalAlignment="Left" Margin="711,60,0,0" VerticalAlignment="Top" Height="29" Width="101" FontWeight="Bold"/>
         <TextBox Name="TxBIdFuncionario" Text="{Binding Funcionario.Id}" IsReadOnly="True" HorizontalAlignment="Left" Height="26" Margin="840,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211"/>
@@ -28,33 +28,32 @@
             <ComboBoxItem x:Name="CBIGerente" Content="Gerente"/>
             <ComboBoxItem x:Name="CBIRecepcionista" Content="Recepcionista"/>
             <ComboBoxItem x:Name="CBIEstoquista" Content="Estoquista"/>
-            <ComboBoxItem x:Name="CBICabelereiro" Content="Cabelereiro"/>
-            <ComboBoxItem x:Name="CBIManicure" Content="Manicure"/>
+            <ComboBoxItem x:Name="CBICabelereiro" Content="Profissional da Beleza"/>
         </ComboBox>
         <Label x:Name="LbEmail" Content="Email:" HorizontalAlignment="Left" Margin="711,212,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="30" Width="101"/>
         <TextBox x:Name="TxBEmail" Text="{Binding Funcionario.Email}" HorizontalAlignment="Left" Height="26" Margin="840,209,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="211"/>
         <Label x:Name="LbStatus" Content="Status:" HorizontalAlignment="Left" Margin="713,240,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="30" Width="111" RenderTransformOrigin="0.5,0.5"/>
         <CheckBox x:Name="CBAtivo" Content="Ativo" HorizontalAlignment="Left" Margin="840,245,0,0" VerticalAlignment="Top" Height="15" Width="117"/>
-        <Button x:Name="BtNovoCadastro" Content="Novo cadastro" HorizontalAlignment="Left" Margin="815,448,0,0" VerticalAlignment="Top" Width="147" Height="22" Click="BtNovoCadastro_Click"/>
-        <Button x:Name="BtSalvar" Content="Salvar" HorizontalAlignment="Left" Margin="629,483,0,0" VerticalAlignment="Top" Width="96" Height="22" Click="BtSalvar_Click" />
-        <Button x:Name="BtSair" Content="Sair" HorizontalAlignment="Left" VerticalAlignment="Top" Width="95" Margin="441,483,0,0" Height="22" Click="BtSair_Click"/>
+        <Button x:Name="BtNovoCadastro" Content="Novo cadastro" HorizontalAlignment="Left" Margin="622,488,0,0" VerticalAlignment="Top" Width="147" Height="22" Click="BtNovoCadastro_Click"/>
+        <Button x:Name="BtSalvar" Content="Salvar" HorizontalAlignment="Left" Margin="415,488,0,0" VerticalAlignment="Top" Width="96" Height="22" Click="BtSalvar_Click" />
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="3" Margin="706,86,0,0" VerticalAlignment="Top" Width="364" RadiusY="1" RadiusX="1"/>
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="3" Margin="706,118,0,0" VerticalAlignment="Top" Width="364" RadiusY="1" RadiusX="1"/>
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="3" Margin="706,146,0,0" VerticalAlignment="Top" Width="364" RadiusY="1" RadiusX="1"/>
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="3" Margin="706,175,0,0" VerticalAlignment="Top" Width="364" RadiusY="1" RadiusX="1"/>
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="3" Margin="706,206,0,0" VerticalAlignment="Top" Width="364" RadiusY="1" RadiusX="1"/>
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="3" Margin="706,235,0,0" VerticalAlignment="Top" Width="364" RadiusY="1" RadiusX="1"/>
-        <Rectangle Fill="WhiteSmoke"  HorizontalAlignment="Left" Height="115" Margin="706,318,0,0" VerticalAlignment="Top" Width="364" RenderTransformOrigin="0.5,0.5"/>
-        <Label x:Name="LbDadosDeLoginy" Content="Dados de Login" HorizontalAlignment="Left" Margin="840,282,0,0" VerticalAlignment="Top" FontWeight="Bold" FontStyle="Italic" Height="26" Width="145"/>
-        <Label x:Name="LbUsuario" Content="Usuário:" HorizontalAlignment="Left" Margin="711,336,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="29" Width="101"/>
-        <TextBox x:Name="TxBUsuario" Text="{Binding Funcionario.Usuario}" HorizontalAlignment="Left" Height="26" Margin="840,335,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211"/>
-        <Label x:Name="LbSenha" Content="Senha:" HorizontalAlignment="Left" Margin="711,365,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="29" Width="101"/>
-        <PasswordBox Name="PbSenha" HorizontalAlignment="Left" Height="25" Width="211" Margin="840,366,0,0" VerticalAlignment="Top"/>        
-        <Label x:Name="LbConfirmarSenha" Content="Confirmar senha:" HorizontalAlignment="Left" Margin="711,397,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="30" Width="113"/>
-        <PasswordBox Name="PbConfirmarSenha" HorizontalAlignment="Left" Height="25" Width="211" Margin="840,402,0,0" VerticalAlignment="Top"/>
-        <Rectangle Fill="White" HorizontalAlignment="Left" Height="3" Margin="706,362,0,0" VerticalAlignment="Top" Width="364" RadiusY="1" RadiusX="1"/>
-        <Rectangle Fill="White" HorizontalAlignment="Left" Height="3" Margin="706,394,0,0" VerticalAlignment="Top" Width="364" RadiusY="1" RadiusX="1"/>
+        <Rectangle Fill="WhiteSmoke"  HorizontalAlignment="Left" Height="112" Margin="706,321,0,0" VerticalAlignment="Top" Width="364" RenderTransformOrigin="0.5,0.5"/>
+        <Label x:Name="LbDadosDeLoginy" Content="Dados de Login" HorizontalAlignment="Left" Margin="840,285,0,0" VerticalAlignment="Top" FontWeight="Bold" FontStyle="Italic" Height="26" Width="145"/>
+        <Label x:Name="LbUsuario" Content="Usuário:" HorizontalAlignment="Left" Margin="711,339,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="29" Width="101"/>
+        <TextBox x:Name="TxBUsuario" Text="{Binding Funcionario.Usuario}" HorizontalAlignment="Left" Height="26" Margin="840,340,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211"/>
+        <Label x:Name="LbSenha" Content="Senha:" HorizontalAlignment="Left" Margin="711,368,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="29" Width="101"/>
+        <PasswordBox Name="PbSenha" HorizontalAlignment="Left" Height="25" Width="211" Margin="840,369,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="LbConfirmarSenha" Content="Confirmar senha:" HorizontalAlignment="Left" Margin="711,400,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="30" Width="113"/>
+        <PasswordBox Name="PbConfirmarSenha" HorizontalAlignment="Left" Height="25" Width="211" Margin="840,405,0,0" VerticalAlignment="Top"/>
+        <Rectangle Fill="White" HorizontalAlignment="Left" Height="3" Margin="706,365,0,0" VerticalAlignment="Top" Width="364" RadiusY="1" RadiusX="1"/>
+        <Rectangle Fill="White" HorizontalAlignment="Left" Height="3" Margin="706,397,0,0" VerticalAlignment="Top" Width="364" RadiusY="1" RadiusX="1"/>
         <Rectangle Fill="WhiteSmoke" HorizontalAlignment="Left" Height="3" Margin="815,35,0,0" VerticalAlignment="Top" Width="130" RadiusY="1" RadiusX="1"/>
-        <Rectangle Fill="WhiteSmoke" HorizontalAlignment="Left" Height="3" Margin="840,305,0,0" VerticalAlignment="Top" Width="95" RadiusY="1" RadiusX="1"/>
+        <Rectangle Fill="WhiteSmoke" HorizontalAlignment="Left" Height="3" Margin="840,308,0,0" VerticalAlignment="Top" Width="95" RadiusY="1" RadiusX="1"/>
+        <Rectangle Fill="White" HorizontalAlignment="Left" Height="3" Margin="706,430,0,0" VerticalAlignment="Top" Width="364" RadiusY="1" RadiusX="1"/>
     </Grid>
 </Page>

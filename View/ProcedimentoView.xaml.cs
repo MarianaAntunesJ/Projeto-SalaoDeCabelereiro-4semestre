@@ -8,6 +8,7 @@ namespace SalaoDeCabelereiro.View
     {
         public object NavigationCacheMode { get; }
         private ProcedimentoViewModel _procedimentoViewModel { get; set; }
+        private ProdutosDeProcedimentoView _produtosDeProcedimentoView;
 
         public ProcedimentoView()
         {
@@ -18,7 +19,9 @@ namespace SalaoDeCabelereiro.View
 
         private void BtnProdutos_Click(object sender, RoutedEventArgs e)
         {
-            FMProdutos.Navigate(new ProdutosDeProcedimentoView(_procedimentoViewModel));
+            if (_produtosDeProcedimentoView == null)
+                _produtosDeProcedimentoView = new ProdutosDeProcedimentoView(_procedimentoViewModel, this);
+            NavigationService.Navigate(_produtosDeProcedimentoView);
         }
 
         private void TxBPesquisa_TextChanged(object sender, TextChangedEventArgs e)
@@ -46,16 +49,16 @@ namespace SalaoDeCabelereiro.View
             {
                 _procedimentoViewModel.Selecionar(DGProcedimentos.Items.IndexOf(DGProcedimentos.CurrentItem));
             }
-            if (_procedimentoViewModel.Procedimento.AreaProfissional.Equals("Gerente"))
+            if (_procedimentoViewModel.Procedimento.AreaProfissional.Equals("Cabelereiro"))
                 CBProfissão.SelectedIndex = 0;
-            else if (_procedimentoViewModel.Procedimento.AreaProfissional.Equals("Recepcionista"))
-                CBProfissão.SelectedIndex = 1;
-            else if (_procedimentoViewModel.Procedimento.AreaProfissional.Equals("Estoquista"))
-                CBProfissão.SelectedIndex = 2;
-            else if (_procedimentoViewModel.Procedimento.AreaProfissional.Equals("Cabelereiro"))
-                CBProfissão.SelectedIndex = 3;
             else if (_procedimentoViewModel.Procedimento.AreaProfissional.Equals("Manicure"))
-                CBProfissão.SelectedIndex = 4;
+                CBProfissão.SelectedIndex = 1;
+        }
+
+        private void DGProcedimentos_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.PropertyName == "Produtos")
+                e.Column = null;
         }
     }
 }

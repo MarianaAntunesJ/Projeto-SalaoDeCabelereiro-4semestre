@@ -17,7 +17,7 @@ namespace SalaoDeCabelereiro.Banco
             Cmd = new SqlCommand();
         }
 
-        private void GetConexao() //ToDo: nome ideal para esta função
+        private void GetConexao()
         {
             Cmd.Connection = Conexao.RetornarConexao();
         }
@@ -30,6 +30,7 @@ namespace SalaoDeCabelereiro.Banco
             Cmd.Parameters.AddWithValue("@Medicao", produto.Medicao);
             Cmd.Parameters.AddWithValue("@Quantidade", produto.Quantidade);
             Cmd.Parameters.AddWithValue("@Ativo", true);
+            Cmd.Parameters.AddWithValue("@Imagem", produto.Imagem);
 
             if (Cmd.ExecuteNonQuery() == 1)
                 return true;
@@ -39,13 +40,13 @@ namespace SalaoDeCabelereiro.Banco
 
         public bool Inserir(ProdutoModel produto)
         {
-            Cmd.CommandText = $@"{ConsultaHelper.GetInsertInto(_tabela)} (@Nome, @Peso, @Medicao, @Quantidade, @Ativo)";
+            Cmd.CommandText = $@"{ConsultaHelper.GetInsertInto(_tabela)} (@Nome, @Peso, @Medicao, @Quantidade, @Ativo, @Imagem)";
             GetConexao();
             Cmd.Parameters.Clear();
             return DadosProduto(produto);
         }
 
-        private List<ProdutoModel> GetProduto()
+        private List<ProdutoModel> GetProdutos()
         {
             SqlDataReader rd = Cmd.ExecuteReader();
             List<ProdutoModel> produtos = new List<ProdutoModel>();
@@ -58,7 +59,8 @@ namespace SalaoDeCabelereiro.Banco
                         (double)rd[nameof(ProdutoModel.Peso)],
                         (string)rd[nameof(ProdutoModel.Medicao)],
                         (int)rd[nameof(ProdutoModel.Quantidade)],
-                        (bool)rd[nameof(ProdutoModel.Ativo)]);
+                        (bool)rd[nameof(ProdutoModel.Ativo)],
+                        (byte[])rd[nameof(ProdutoModel.Imagem)]);
 
                 produtos.Add(produto);
             }
@@ -66,29 +68,30 @@ namespace SalaoDeCabelereiro.Banco
             return produtos;
         }
 
-        public List<ProdutoModel> GetProdutos(int id)
+        public ProdutoModel GetProduto(int id)
         {
             GetConexao();
             Cmd.CommandText = $"{ConsultaHelper.GetSelectFrom(_tabela)} WHERE Id = @id";
+
+            Cmd.Parameters.Clear();
             Cmd.Parameters.AddWithValue("@Id", id);
 
             SqlDataReader rd = Cmd.ExecuteReader();
-            List<ProdutoModel> produtos = new List<ProdutoModel>();
 
+            ProdutoModel produto = new ProdutoModel();
             while (rd.Read())
             {
-                ProdutoModel produto = new ProdutoModel(
+                produto = new ProdutoModel(
                         (int)rd[nameof(ProdutoModel.Id)],
                         (string)rd[nameof(ProdutoModel.Nome)],
                         (double)rd[nameof(ProdutoModel.Peso)],
                         (string)rd[nameof(ProdutoModel.Medicao)],
                         (int)rd[nameof(ProdutoModel.Quantidade)],
-                        (bool)rd[nameof(ProdutoModel.Ativo)]);
-
-                produtos.Add(produto);
+                        (bool)rd[nameof(ProdutoModel.Ativo)],
+                        (byte[])rd[nameof(ProdutoModel.Imagem)]);
             }
             rd.Close();
-            return produtos;
+            return produto;
         }
 
         public List<ProdutoModel> Listar()
@@ -96,7 +99,7 @@ namespace SalaoDeCabelereiro.Banco
             GetConexao();
             Cmd.CommandText = $"{ConsultaHelper.GetSelectFrom(_tabela)}";
 
-            return GetProduto();
+            return GetProdutos();
         }
 
         public List<ProdutoModel> Consultar(string busca)
@@ -108,13 +111,13 @@ namespace SalaoDeCabelereiro.Banco
             Cmd.Parameters.Clear();
             Cmd.Parameters.AddWithValue("@busca", busca);
 
-            return GetProduto();
+            return GetProdutos();
         }
 
         public bool Atualizar(ProdutoModel produto)
         {
             GetConexao();
-            Cmd.CommandText = $@"{ConsultaHelper.GetUpdateSet(_tabela)} Nome = @Nome, Peso = @Peso, Medicao = @Medicao, Quantidade = @Quantidade, Ativo = @Ativo  WHERE Id = @id";
+            Cmd.CommandText = $@"{ConsultaHelper.GetUpdateSet(_tabela)} Nome = @Nome, Peso = @Peso, Medicao = @Medicao, Quantidade = @Quantidade, Ativo = @Ativo, Imagem = @Imagem  WHERE Id = @id";
             GetConexao();
             Cmd.Parameters.AddWithValue("@Id", produto.Id);
 

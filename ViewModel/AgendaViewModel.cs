@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace SalaoDeCabelereiro.ViewModel
 {
-    class AgendaViewModel
+    class AgendaViewModel : INotifyPropertyChanged
     {
 
         private AgendaModel _agendamento { get; set; }
@@ -45,9 +45,33 @@ namespace SalaoDeCabelereiro.ViewModel
                 
         }
 
-        public bool Salvar()
+        public ObservableCollection<KeyValuePair<int, string>> CarregarClientes()
+        {
+            var chavesValoresClientes = new ObservableCollection<KeyValuePair<int, string>>();
+            ClienteDAO clienteDAO = new ClienteDAO();
+            var clientes = clienteDAO.Listar();
+            foreach (ClienteModel item in clientes)
+                chavesValoresClientes.Add(new KeyValuePair<int, string>(item.Id, item.Nome));
+            return chavesValoresClientes;
+        }
+
+        public ObservableCollection<KeyValuePair<int, string>> CarregarProcedimentos()
+        {
+            var chavesValoresProcedimentos = new ObservableCollection<KeyValuePair<int, string>>();
+            ProcedimentoDAO procedimentoDAO = new ProcedimentoDAO();
+            var procedimentos = procedimentoDAO.Listar();
+            foreach (ProcedimentoModel item in procedimentos)
+                chavesValoresProcedimentos.Add(new KeyValuePair<int, string>(item.Id, item.Nome));
+            return chavesValoresProcedimentos;
+
+        }
+
+        public bool Salvar(int clienteId, int profissionalId, int procedimentoId)
         {
             bool sucesso;
+            _agendamento.Cliente = new ClienteModel() { Id = clienteId };
+            _agendamento.Funcionario = new FuncionarioModel() { Id = profissionalId };
+            _agendamento.Procedimento = new ProcedimentoModel() { Id = procedimentoId };
             if (_agendamento.Id == 0)
                 sucesso = _agendamentoDAO.Inserir(_agendamento);
             else
@@ -78,7 +102,7 @@ namespace SalaoDeCabelereiro.ViewModel
 
         public void LimparUsuarioAtual()
         {
-            Agendamento = new AgendaModel();
+            Agendamento = new AgendaModel { Data = DateTime.Today };
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

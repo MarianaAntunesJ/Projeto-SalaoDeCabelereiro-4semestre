@@ -12,6 +12,7 @@ namespace SalaoDeCabelereiro.Banco
         private readonly string _tabela = "Procedimento";
         private Conexao Conexao { get; set; }
         private SqlCommand Cmd { get; set; }
+        private ProdutoDAO _produtoDAO = new ProdutoDAO();
 
         public ProcedimentoDAO()
         {
@@ -19,7 +20,7 @@ namespace SalaoDeCabelereiro.Banco
             Cmd = new SqlCommand();
         }
 
-        private void GetConexao() //ToDo: nome ideal para esta função
+        private void GetConexao()
         {
             Cmd.Connection = Conexao.RetornarConexao();
         }
@@ -43,9 +44,11 @@ namespace SalaoDeCabelereiro.Banco
             var sb = new StringBuilder();
 
             foreach (var produto in procedimento.Produtos)
-                sb.Append($"({produto.Id}, {idProcedimento})\t");
+                sb.Append($"({produto.Id}, {idProcedimento}),\t");
 
-            return InserirProdutosDeProcedimento(sb.ToString());
+            string valores = sb.ToString();
+            valores = valores.Remove(valores.Length - 2);
+            return InserirProdutosDeProcedimento(valores);
         }
 
         private bool InserirProdutosDeProcedimento(string valores)
@@ -79,15 +82,49 @@ namespace SalaoDeCabelereiro.Banco
                 procedimentos.Add(procedimento);
             }
             rd.Close();
+            var ver = new ObservableCollection<ProdutoModel>();
+            foreach (ProcedimentoModel item in procedimentos)
+            {
+                ver = new ObservableCollection<ProdutoModel>(GetProdutosDeProcedimento(item.Id));
+                item.Produtos = ver;
+            }
             return procedimentos;
+        }
+
+        private List<ProdutoModel> GetProdutosDeProcedimento(int idProcedimento)
+        {
+            GetConexao();
+            Cmd.CommandText = $"{ConsultaHelper.GetSelectFrom("Produtos_De_Procedimento")} WHERE ProcedimentoId = @idProcedimento ";
+
+            Cmd.Parameters.Clear();
+            Cmd.Parameters.AddWithValue("@idProcedimento", idProcedimento);
+
+            SqlDataReader rd = Cmd.ExecuteReader();
+            List<int> produtos = new List<int>();
+
+            while (rd.Read())
+            {
+                produtos.Add((int)rd["ProdutoId"]);
+            }
+            rd.Close();
+            return ListaProdutosEscolhidos(produtos); 
+        }
+
+        private List<ProdutoModel> ListaProdutosEscolhidos(List<int> idProdutos)
+        {
+            List<ProdutoModel> produtos = new List<ProdutoModel>();
+            foreach (int item in idProdutos)
+               produtos.Add(_produtoDAO.GetProduto(item));
+            return produtos;
         }
 
         public List<ProcedimentoModel> Listar()
         {
             GetConexao();
             Cmd.CommandText = $"{ConsultaHelper.GetSelectFrom(_tabela)}";
+            var a = GetProcedimento();
 
-            return GetProcedimento();
+            return a;
         }
 
         public List<ProcedimentoModel> Consultar(string busca)

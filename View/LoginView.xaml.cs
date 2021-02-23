@@ -1,27 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SalaoDeCabelereiro.Banco;
+using SalaoDeCabelereiro.ViewModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace SalaoDeCabelereiro.View
 {
-    /// <summary>
-    /// Lógica interna para Login.xaml
-    /// </summary>
     public partial class Login : Window
     {
+        private LoginViewModel _loginViewModel { get; set; } = new LoginViewModel();
+
         public Login()
         {
             InitializeComponent();
+        }
+
+        private void BtEntrar_Click(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(TxBUsuario.Text) && !string.IsNullOrEmpty(PBSenha.Password))
+            {
+                var profissaoUsuario = _loginViewModel.LoginValido(TxBUsuario.Text, FuncionarioDAO.GerarHashMd5(PBSenha.Password));
+                if (profissaoUsuario != null)
+                {
+                    MenuView menuView = new MenuView(profissaoUsuario);
+                    menuView.Show();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Usuário e/ou senha inválida. Tente novamente", "Login Inválido");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Usuário e/ou senha não preenchida. Tente novamente", "Login Inválido");
+            }
         }
     }
 }

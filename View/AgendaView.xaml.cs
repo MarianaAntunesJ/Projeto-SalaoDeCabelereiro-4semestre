@@ -1,20 +1,8 @@
-﻿using SalaoDeCabelereiro.Model;
-using SalaoDeCabelereiro.ViewModel;
-using System;
+﻿using SalaoDeCabelereiro.ViewModel;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace SalaoDeCabelereiro.View
 {
@@ -22,9 +10,11 @@ namespace SalaoDeCabelereiro.View
     {
         private AgendaViewModel _agendaViewModel { get; set; }
 
-        private ObservableCollection<KeyValuePair<int, string>> _funcionarios; 
+        private ObservableCollection<KeyValuePair<int, string>> _funcionarios;
+        private ObservableCollection<KeyValuePair<int, string>> _procedimentos;
+        private ObservableCollection<KeyValuePair<int, string>> _clientes;
 
-        public AgendaView() //PareiAqui: verificar se Id do combobox profissional está certo, continuar a implementar a tela agenda, fazer tela pagamento 
+        public AgendaView() 
         {
             InitializeComponent();
             _agendaViewModel = new AgendaViewModel();
@@ -33,8 +23,23 @@ namespace SalaoDeCabelereiro.View
             _funcionarios = _agendaViewModel.CarregarFuncionarios();
             CBProfissional.DisplayMemberPath = "Value";
             CBProfissional.SelectedValuePath = "Key";
-            foreach(var item in _funcionarios)
+
+            foreach (var item in _funcionarios)
                 CBProfissional.Items.Add(item);
+
+            _procedimentos = _agendaViewModel.CarregarProcedimentos();
+            CBProcedimento.DisplayMemberPath = "Value";
+            CBProcedimento.SelectedValuePath = "Key";
+
+            foreach (var item in _procedimentos)
+                CBProcedimento.Items.Add(item);
+
+            _clientes = _agendaViewModel.CarregarClientes();
+            CBNomeDoCliente.DisplayMemberPath = "Value";
+            CBNomeDoCliente.SelectedValuePath = "Key";
+
+            foreach (var item in _clientes)
+                CBNomeDoCliente.Items.Add(item);
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -50,15 +55,41 @@ namespace SalaoDeCabelereiro.View
 
         private void BtSalvar_Click(object sender, RoutedEventArgs e)
         {
-            if(_agendaViewModel.Salvar())
-                MessageBox.Show("Procedimento salvo!", "Salvo");
+            int clienteId = int.Parse(CBNomeDoCliente.SelectedValue.ToString());
+            int profissionalId = int.Parse(CBProfissional.SelectedValue.ToString());
+            int procedimentoId = int.Parse(CBProcedimento.SelectedValue.ToString());
+            if (_agendaViewModel.Salvar(clienteId, profissionalId, procedimentoId))
+                MessageBox.Show("Agendamento salvo!", "Salvo");
             else
-                MessageBox.Show("Procedimento não foi salvo.", "Erro");
+                MessageBox.Show("Agendamento não foi salvo.", "Erro");
         }
 
         private void DGAgenda_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (DGAgenda.Items.IndexOf(DGAgenda.CurrentItem) >= 0)
+            {
+                _agendaViewModel.Selecionar(DGAgenda.Items.IndexOf(DGAgenda.CurrentItem));
 
+                int contador1 = 0;
+                for (int i = 1; i <= 17; i++)
+                {
+                    if (_agendaViewModel.Agendamento.Horas.Equals($"{i}"))
+                        CbHoras.SelectedIndex = contador1;
+                    contador1++;
+                }
+                int j = 0;
+                int contador = 0;
+                while (j <= 55)
+                {
+                    if (_agendaViewModel.Agendamento.Minutos.Equals($"{j}"))
+                    {
+                        CbHoras.SelectedIndex = contador;
+                        break;
+                    }
+                    j += 5;
+                    contador++;
+                }
+            }
         }
     }
 }
