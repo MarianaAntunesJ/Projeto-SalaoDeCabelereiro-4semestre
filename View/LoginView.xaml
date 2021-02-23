@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SalaoDeCabelereiro.View"
         mc:Ignorable="d"
-        Title="Login" Style="{StaticResource DesignTela}" WindowStartupLocation="CenterScreen">
+        Title="Login" Background="#FFDFCAFD" Style="{StaticResource DesignTela}" WindowStartupLocation="CenterScreen">
     <Viewbox>
         <Grid Height="694" Width="1280">
             <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="1" Margin="330,361,0,0" Stroke="#FFDFCAFD" VerticalAlignment="Top" Width="200" RenderTransformOrigin="0.5,0.5">
@@ -38,7 +38,7 @@
                     </ImageBrush>
                 </Label.Background>
             </Label>
-            <Button Name="BtEntrar" Content="Entrar" IsDefault="True" HorizontalAlignment="Left" Margin="875,422,0,0" VerticalAlignment="Top" Width="75" Background="#FFDFCAFD" Click="BtEntrar_Click"/>
+            <Button Name="BtEntrar" Content="Entrar" IsDefault="True" HorizontalAlignment="Left" Margin="875,422,0,0" VerticalAlignment="Top" Width="75" Background="WhiteSmoke"  Click="BtEntrar_Click"/>
 
         </Grid>
     </Viewbox>

@@ -16,11 +16,11 @@ namespace SalaoDeCabelereiro.View
             InitializeComponent();
 
             Dt.Tick += new EventHandler(DtTick);
-            Dt.Interval = new TimeSpan(0, 0, 3);
+            Dt.Interval = new TimeSpan(0, 0, 4);
             Dt.Start();
 
-            Duration duration = new Duration(TimeSpan.FromSeconds(3));
-            DoubleAnimation doubleAnimation = new DoubleAnimation(progress.Value + 200, duration);
+            Duration duration = new Duration(TimeSpan.FromSeconds(5));
+            DoubleAnimation doubleAnimation = new DoubleAnimation(progress.Value + 250, duration);
             progress.BeginAnimation(ProgressBar.ValueProperty, doubleAnimation);
         }
 

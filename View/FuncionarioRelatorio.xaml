@@ -5,12 +5,12 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SalaoDeCabelereiro.View"
       mc:Ignorable="d" 
-      d:DesignHeight="520" d:DesignWidth="1080"
+      d:DesignHeight="377" d:DesignWidth="1060"
       xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
       Title="Funcionarios" Background="#FFDFCAFD">
 
     <Grid>
-        <WindowsFormsHost  HorizontalAlignment="Left" Height="368" Margin="106,86,0,0" VerticalAlignment="Top" Width="868">
+        <WindowsFormsHost  HorizontalAlignment="Left" Height="377" VerticalAlignment="Top" Width="1060">
             <rv:ReportViewer x:Name="RvFuncionario" Load="RvFuncionario_Load"/>
         </WindowsFormsHost>
     </Grid>

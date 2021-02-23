@@ -10,6 +10,9 @@
 
     <Grid>
         <Image Source="..\Imagens\Menu.png" Height="500" Width="500" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Label Name="LbTime" HorizontalAlignment="Left" Margin="806,190,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="28"/>
+        <Label Name="LbTime" HorizontalAlignment="Left" Margin="60,481,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Height="29" Width="121"/>
+        <Label Content="SISTEMA GERENCIADOR DE SALÃO DE BELEZA" HorizontalAlignment="Left" VerticalAlignment="Top" Height="39" Width="529" Margin="261,29,0,0" FontWeight="Bold" FontFamily="Sitka Heading" FontSize="24"/>
+        <Label Content="Desenvolvido por Mariana Antunes, 2021." HorizontalAlignment="Left" VerticalAlignment="Top" Height="39" Width="346" Margin="734,489,0,-8" FontWeight="Bold" FontFamily="Sitka Heading" FontSize="18"/>
+        <Label Content="Data:" HorizontalAlignment="Left" VerticalAlignment="Top" Height="39" Width="55" Margin="0,481,0,0" FontWeight="Bold" FontFamily="Sitka Heading" FontSize="18"/>
     </Grid>
 </Page>
