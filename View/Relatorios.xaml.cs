@@ -26,5 +26,10 @@ namespace SalaoDeCabelereiro.View
         {
             FrameMain.Navigate(new ProcedimentosRelatorio());
         }
+
+        private void Clientes_Click(object sender, RoutedEventArgs e)
+        {
+            FrameMain.Navigate(new ClientesRelatorio());
+        }
     }
 }

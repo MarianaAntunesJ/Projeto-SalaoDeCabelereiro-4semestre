@@ -88,6 +88,7 @@
     <Compile Include="Banco\FuncionarioDAO.cs" />
     <Compile Include="Banco\ProcedimentoDAO.cs" />
     <Compile Include="Banco\ProdutoDAO.cs" />
+    <Compile Include="Banco\RelatorioDAL\ClienteRelatorioDAO.cs" />
     <Compile Include="Banco\RelatorioDAL\FuncionarioRelatorioDAO.cs" />
     <Compile Include="Banco\RelatorioDAL\ProcedimentoRelatorioDAO.cs" />
     <Compile Include="Banco\RelatorioDAL\ProdutoRelatorioDAO.cs" />
@@ -97,6 +98,7 @@
     <Compile Include="Model\FuncionarioModel.cs" />
     <Compile Include="Model\ProcedimentoModel.cs" />
     <Compile Include="Model\ProdutoModel.cs" />
+    <Compile Include="Relatorio\ClienteRelatorio.cs" />
     <Compile Include="Relatorio\FuncionarioRelatorio.cs" />
     <Compile Include="Relatorio\ProcedimentoRelatorio.cs" />
     <Compile Include="Relatorio\ProdutoRelatorio.cs" />
@@ -114,6 +116,9 @@
     </Compile>
     <Compile Include="View\AnamneseView.xaml.cs">
       <DependentUpon>AnamneseView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ClientesRelatorio.xaml.cs">
+      <DependentUpon>ClientesRelatorio.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ClienteView.xaml.cs">
       <DependentUpon>ClienteView.xaml</DependentUpon>
@@ -163,6 +168,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\AnamneseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ClientesRelatorio.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -237,10 +246,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Relatorio\ClientesReport.rdlc" />
     <EmbeddedResource Include="Relatorio\FuncionariosReport.rdlc" />
     <EmbeddedResource Include="Relatorio\ProcedimentosReport.rdlc" />
     <EmbeddedResource Include="Relatorio\ProdutosReport.rdlc" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\SalaoDeCabelereiro.Relatorio.ClienteRelatorio.datasource" />
     <None Include="Properties\DataSources\SalaoDeCabelereiro.Relatorio.FuncionarioRelatorio.datasource" />
     <None Include="Properties\DataSources\SalaoDeCabelereiro.Relatorio.ProcedimentoRelatorio.datasource" />
     <None Include="Properties\DataSources\SalaoDeCabelereiro.Relatorio.ProdutoRelatorio.datasource" />
@@ -271,6 +282,7 @@
     <Resource Include="Imagens\menu.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Imagens\Relatorio.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

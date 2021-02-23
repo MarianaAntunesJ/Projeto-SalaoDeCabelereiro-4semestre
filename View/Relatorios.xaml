@@ -9,10 +9,11 @@
       Title="Relatorios">
 
     <Grid Background="#FFDFCAFD">
-        <Button Name="BtnFuncionarios" Content="FUNCIONARIOS" HorizontalAlignment="Left" Margin="267,476,0,0" VerticalAlignment="Top" Width="112" Click="Funcionarios_Click"/>
-        <Button Name="BtnProdutos" Content="PRODUTOS" HorizontalAlignment="Left" Margin="43,476,0,0" VerticalAlignment="Top" Width="112" Click="Produtos_Click"/>
-        <Frame Name="FrameMain" NavigationUIVisibility="Hidden" Content="Frame" HorizontalAlignment="Left" Height="456" VerticalAlignment="Top" Width="1080"/>
-        <Button x:Name="BtnProcedimentos" Content="PROCEDIMENTOS" HorizontalAlignment="Left" Margin="473,476,0,0" VerticalAlignment="Top" Width="112" Click="Procedimentos_Click"/>
-
+        <Image Name="ImgLogin" Source="..\Imagens\Relatorio.png" HorizontalAlignment="Left" Height="310" Margin="405,77,0,0" VerticalAlignment="Top" Width="454"/>
+        <Button Name="BtnFuncionarios" Content="FUNCIONARIOS" HorizontalAlignment="Left" Margin="406,463,0,0" VerticalAlignment="Top" Width="112" Click="Funcionarios_Click"/>
+        <Button Name="BtnProdutos" Content="PRODUTOS" HorizontalAlignment="Left" Margin="182,463,0,0" VerticalAlignment="Top" Width="112" Click="Produtos_Click"/>
+        <Button x:Name="BtnProcedimentos" Content="PROCEDIMENTOS" HorizontalAlignment="Left" Margin="612,463,0,0" VerticalAlignment="Top" Width="112" Click="Procedimentos_Click"/>
+        <Button x:Name="BtnClientes" Content="CLIENTES" HorizontalAlignment="Left" Margin="817,463,0,0" VerticalAlignment="Top" Width="112" Click="Clientes_Click"/>
+        <Frame Name="FrameMain" NavigationUIVisibility="Hidden" VerticalAlignment="Top" HorizontalAlignment="Center" Height="377" Width="1060" Margin="10,10,10,0"/>
     </Grid>
 </Page>
